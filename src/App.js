@@ -1,5 +1,5 @@
 import Home from "./components/home/home";
-import MainHeader from "./UI/headers/mainHeader";
+import Card from "./UI/card";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Signin from "./components/auth/auth";
 
@@ -7,7 +7,9 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <MainHeader></MainHeader>
+        <Card>
+          <div>Test</div>
+        </Card>
         {/* <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/home/*" element={<Signin />} />
