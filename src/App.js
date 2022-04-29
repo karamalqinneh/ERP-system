@@ -1,5 +1,5 @@
 import Home from "./components/home/home";
-import InnerHeader from "./UI/headers/inner-headers";
+import Card from "./UI/card";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Signin from "./components/auth/auth";
 
@@ -7,8 +7,10 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <InnerHeader></InnerHeader>
-        <Routes>
+        <Card>
+          <div>Test</div>
+        </Card>
+        {/* <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/home/*" element={<Signin />} />
           <Route path="/scm/*" element={<Home />} />
@@ -17,7 +19,7 @@ function App() {
           <Route path="/accounting/*" element={<Home />} />
           <Route path="/payments/*" element={<Home />} />
           <Route path="/tracking/*" element={<Home />} />
-        </Routes>
+        </Routes> */}
       </BrowserRouter>
     </>
   );
