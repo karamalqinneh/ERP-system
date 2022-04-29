@@ -10,6 +10,8 @@ const Form = styled.form`
   padding: 2.5rem;
   border: 1px solid rgba(9, 200, 195, 0.55);
   border-radius: 7.5%;
+  box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.2);
+  background: #fdfdfd;
 `;
 
 const Image = styled.img`
@@ -26,8 +28,9 @@ const Input = styled.input`
 `;
 
 const RemmemberMe = styled.div`
-  margin-left: calc(30vw - 37.5vw);
   margin-top: 1rem;
+  overflow: none;
+  width: auto;
 `;
 
 const Button = styled.button`
@@ -47,7 +50,6 @@ const Button = styled.button`
 
 const Link = styled.a`
   margin-top: 1rem;
-  margin-left: calc(30vw - 37.5vw);
   text-decoration: underline;
   color: blue;
 `;
@@ -61,7 +63,7 @@ function Signin() {
       <Input type="password" placeholder="Password" />
       <RemmemberMe>
         <input type="checkbox" />
-        <label>Remmember me</label>
+        <label style={{ marginLeft: "0.5rem" }}>Remmember me</label>
       </RemmemberMe>
       <Button>Sign in</Button>
       <Link>Forgot Password?</Link>
