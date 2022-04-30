@@ -54,9 +54,9 @@ const Link = styled.a`
   color: blue;
 `;
 
-function Signin() {
+function Signin(props) {
   return (
-    <Form>
+    <Form className={props.className}>
       <Image src={login} />
       <h1>Sign in</h1>
       <Input type="email" placeholder="Email Address" />

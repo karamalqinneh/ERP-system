@@ -4,15 +4,15 @@ import logo from "../../assets/logo.png";
 
 const Navbar = styled.nav`
   color: #09c8c3;
-`;
-
-const Container = styled.div`
+  width: 100%;
   display: flex;
   justify-content: flex-start;
   padding: 1rem;
   height: 12.5vh;
   box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.2);
 `;
+
+// const Container = styled.div``;
 
 const Nav = styled.div`
   justify-content: flex-start;
@@ -31,18 +31,14 @@ const Image = styled.img`
   height: 2.667rem;
 `;
 
-function MainHeader() {
+function MainHeader(props) {
   return (
-    <>
-      <Navbar>
-        <Container>
-          <Image src={logo} />
-          <Nav>About us</Nav>
-          <Nav>Features</Nav>
-          <Nav>Support</Nav>
-        </Container>
-      </Navbar>
-    </>
+    <Navbar className={props.className}>
+      <Image src={logo} />
+      <Nav>About us</Nav>
+      <Nav>Features</Nav>
+      <Nav>Support</Nav>
+    </Navbar>
   );
 }
 
