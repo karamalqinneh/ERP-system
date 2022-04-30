@@ -1,6 +1,7 @@
 import Home from "./components/home/home";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Signin from "./components/auth/login";
+import HR from "./components/HR/HR";
 
 function App() {
   return (
@@ -10,7 +11,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/home/*" element={<Home />} />
           <Route path="/scm/*" element={<Home />} />
-          <Route path="/hr/*" element={<Home />} />
+          <Route path="/hr/*" element={<HR />} />
           <Route path="/crm/*" element={<Home />} />
           <Route path="/accounting/*" element={<Home />} />
           <Route path="/payments/*" element={<Home />} />

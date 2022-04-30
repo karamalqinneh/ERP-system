@@ -1,22 +1,23 @@
 import styled from "styled-components";
 
 const SideContainer = styled.div`
-  width: 30vw;
+  width: 25vw;
   height: 100vh;
   background-color: rgb(9, 200, 195);
-  position: fixed;
-  top: 0;
-  left: 0;
+
   color: #fefefa;
 `;
+// position: fixed;
+// top: 0;
+// left: 0;
 
 const TabsContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: rgb(9, 200, 195);
-  height: 100%;
 `;
+// height: 100%;
 
 const TabName = styled.div`
   background-color: rgb(9, 200, 195);
@@ -48,8 +49,8 @@ function SideBar(props) {
     <SubTabs onClick={ele.actionName}>{ele.tabName}</SubTabs>
   ));
   return (
-    <SideContainer>
-      <TabName>TAB</TabName>
+    <SideContainer className={props.className}>
+      <TabName>{props.tabName}</TabName>
       <TabsContainer>
         {tabs}
         <Footer>Karam Al-Qinneh</Footer>
