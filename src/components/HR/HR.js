@@ -1,15 +1,16 @@
 import styled from "styled-components";
 import SideBar from "../../UI/side-bar/sideBar";
 import InnerHeader from "../../UI/headers/inner-headers";
-import { useState, useReducer } from "react";
+import { useReducer } from "react";
 import LeaveRequestMain from "./leave-request/leaveRequestMain";
+import VacationRequestMain from "./vaction-request/vacationRequestMain";
+import data from "../../data";
+import SalarySlipMain from "./salary-slip/salarySlipMain";
 
 const Section = styled.section`
   display: grid;
   grid-template-rows: auto 10vh 1fr 10vh;
   grid-template-columns: auto 5vw 1fr 1fr 5vw;
-  justify-content: center;
-  align-items: center;
   width: 100%;
   height: 100%;
 `;
@@ -23,6 +24,7 @@ const StyledInnerHeader = styled(InnerHeader)`
 `;
 const Div = styled.div`
   grid-area: 3 / 3 / 5 / 5;
+  margin-left: 4rem;
 `;
 
 const initialState = <Div>Main</Div>;
@@ -36,9 +38,17 @@ const reducer = (state, action) => {
         </Div>
       );
     case "VACATION":
-      return <Div>Vacation</Div>;
+      return (
+        <Div>
+          <VacationRequestMain />
+        </Div>
+      );
     case "SALARY":
-      return <Div>Salary</Div>;
+      return (
+        <Div>
+          <SalarySlipMain />
+        </Div>
+      );
     case "MANAGER":
       return <Div>Manager</Div>;
     default:
@@ -48,43 +58,11 @@ const reducer = (state, action) => {
 
 function HR() {
   const [state, dispatch] = useReducer(reducer, initialState);
-
-  const data = [
-    {
-      tabName: "Main",
-      actionName: () => {
-        dispatch({ type: "MAIN" });
-      },
-    },
-    {
-      tabName: "Leave Request",
-      actionName: () => {
-        dispatch({ type: "LEAVE" });
-      },
-    },
-    {
-      tabName: "Vacation Request",
-      actionName: () => {
-        dispatch({ type: "VACATION" });
-      },
-    },
-    {
-      tabName: "Salary Slip",
-      actionName: () => {
-        dispatch({ type: "SALARY" });
-      },
-    },
-    {
-      tabName: "Manager View",
-      actionName: () => {
-        dispatch({ type: "MANAGER" });
-      },
-    },
-  ];
+  const dataArray = data(dispatch).HR;
   return (
     <Section>
       <StyledInnerHeader></StyledInnerHeader>
-      <StyledSideBar tabsData={data} tabName="HR"></StyledSideBar>
+      <StyledSideBar tabsData={dataArray} tabName="HR"></StyledSideBar>
       {state}
     </Section>
   );

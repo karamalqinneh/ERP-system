@@ -1,7 +1,7 @@
-import { useRef } from "react";
 import styled from "styled-components";
 import Card from "../../../UI/card";
-import VacationBalance from "../vaction-request/vacationBalance";
+import VacationBalance from "./vacationBalance";
+import { useRef } from "react";
 
 const Container = styled(Card)`
   display: flex;
@@ -35,7 +35,7 @@ const FormContainer = styled.div`
   background-color: #fefefa;
 `;
 
-const InputsContainer = styled.div`
+const InnerContainer = styled.div`
   display: flex;
   flex-direction: column;
   background-color: #fefefa;
@@ -43,7 +43,7 @@ const InputsContainer = styled.div`
 
 const Button = styled.button`
   height: 2.5rem;
-  width: 40%;
+  width: 100%;
   margin-top: 1rem;
   border: 1px solid #b3b3b3;
   border-radius: 5px;
@@ -74,22 +74,19 @@ const Label = styled.label`
   margin-top: 1rem;
 `;
 
-function LeaveRequestMain(props) {
-  let dateRef = useRef();
-  let startTimeRef = useRef();
-  let endTimeRef = useRef();
+function VacationRequestMain(props) {
+  let startDateRef = useRef();
+  let endDateRef = useRef();
   let commentsRef = useRef();
   const leaveRequestHandler = (e) => {
     e.preventDefault();
     console.log({
-      date: dateRef.current.value,
-      start: startTimeRef.current.value,
-      end: endTimeRef.current.value,
+      start: startDateRef.current.value,
+      end: endDateRef.current.value,
       comments: commentsRef.current.value,
     });
-    dateRef.current.value = "";
-    startTimeRef.current.value = "";
-    endTimeRef.current.value = "";
+    startDateRef.current.value = "";
+    endDateRef.current.value = "";
     commentsRef.current.value = "";
   };
   return (
@@ -97,33 +94,20 @@ function LeaveRequestMain(props) {
       <VacationBalance />
       <Form onSubmit={leaveRequestHandler}>
         <FormContainer>
-          <div style={{ backgroundColor: "#fefefa" }}>
-            <Label>Date:</Label>
-            <Input type="date" style={{ height: "12rem" }} ref={dateRef} />
-          </div>
-          <InputsContainer>
-            <div style={{ backgroundColor: "#fefefa" }}>
-              <Label>Start Time:</Label>
-              <Input type="time" ref={startTimeRef} />
-            </div>
-            <div style={{ backgroundColor: "#fefefa" }}>
-              <Label>End Time:</Label>
-              <Input type="time" ref={endTimeRef} />
-            </div>
-            <div style={{ backgroundColor: "#fefefa" }}>
-              <Input
-                type="text"
-                placeholder="Comments"
-                style={{ marginTop: "1rem" }}
-                ref={commentsRef}
-              />
-            </div>
-          </InputsContainer>
+          <InnerContainer>
+            <Label>Start Date:</Label>
+            <Input type="date" style={{ height: "10rem" }} ref={startDateRef} />
+            <Input type="text" placeholder="Comments" ref={commentsRef} />
+          </InnerContainer>
+          <InnerContainer>
+            <Label>End Date:</Label>
+            <Input type="date" style={{ height: "10rem" }} ref={endDateRef} />
+            <Button type="submit">Submit</Button>
+          </InnerContainer>
         </FormContainer>
-        <Button type="submit">Submit</Button>
       </Form>
     </Container>
   );
 }
 
-export default LeaveRequestMain;
+export default VacationRequestMain;

@@ -21,7 +21,8 @@ const Container = styled.div`
   border-bottom: 2vh solid rgb(9, 200, 195);
   box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.2);
   animation: ${float} 3s linear infinite;
-  border-radius: 7%;
+  border-radius: 25px;
+  text-transform: capitalize;
 `;
 
 function Slogan(props) {

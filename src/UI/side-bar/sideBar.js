@@ -1,15 +1,12 @@
 import styled from "styled-components";
 
 const SideContainer = styled.div`
-  width: 25vw;
+  width: 20vw;
   height: 100vh;
   background-color: rgb(9, 200, 195);
-
+  box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.2);
   color: #fefefa;
 `;
-// position: fixed;
-// top: 0;
-// left: 0;
 
 const TabsContainer = styled.div`
   display: flex;
@@ -17,7 +14,6 @@ const TabsContainer = styled.div`
   align-items: center;
   background-color: rgb(9, 200, 195);
 `;
-// height: 100%;
 
 const TabName = styled.div`
   background-color: rgb(9, 200, 195);
@@ -26,6 +22,7 @@ const TabName = styled.div`
   align-items: center;
   font-size: 1.75rem;
   padding: 3rem 1.5rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 `;
 
 const SubTabs = styled.div`
@@ -36,6 +33,7 @@ const SubTabs = styled.div`
   padding: 1rem 0.75rem;
   text-align: center;
   cursor: pointer;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 `;
 
 const Footer = styled.footer`
@@ -46,7 +44,9 @@ const Footer = styled.footer`
 
 function SideBar(props) {
   let tabs = props.tabsData.map((ele) => (
-    <SubTabs onClick={ele.actionName}>{ele.tabName}</SubTabs>
+    <SubTabs key={ele.tabName} onClick={ele.actionName}>
+      {ele.tabName}
+    </SubTabs>
   ));
   return (
     <SideContainer className={props.className}>

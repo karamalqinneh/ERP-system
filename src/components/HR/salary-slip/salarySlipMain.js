@@ -1,14 +1,19 @@
-import { useRef } from "react";
 import styled from "styled-components";
 import Card from "../../../UI/card";
-import VacationBalance from "../vaction-request/vacationBalance";
+import { useRef } from "react";
+
+const MainContainer = styled.div`
+  display: flex;
+  width: 65vw;
+  height: 70vh;
+`;
 
 const Container = styled(Card)`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 60vw;
+  width: 40vw;
   height: 70vh;
   background-color: #fefefa;
 `;
@@ -35,7 +40,7 @@ const FormContainer = styled.div`
   background-color: #fefefa;
 `;
 
-const InputsContainer = styled.div`
+const InnerContainer = styled.div`
   display: flex;
   flex-direction: column;
   background-color: #fefefa;
@@ -43,7 +48,7 @@ const InputsContainer = styled.div`
 
 const Button = styled.button`
   height: 2.5rem;
-  width: 40%;
+  width: 100%;
   margin-top: 1rem;
   border: 1px solid #b3b3b3;
   border-radius: 5px;
@@ -74,56 +79,45 @@ const Label = styled.label`
   margin-top: 1rem;
 `;
 
-function LeaveRequestMain(props) {
-  let dateRef = useRef();
-  let startTimeRef = useRef();
-  let endTimeRef = useRef();
+function SalarySlipMain(props) {
+  let startDateRef = useRef();
+  let endDateRef = useRef();
   let commentsRef = useRef();
   const leaveRequestHandler = (e) => {
     e.preventDefault();
     console.log({
-      date: dateRef.current.value,
-      start: startTimeRef.current.value,
-      end: endTimeRef.current.value,
+      start: startDateRef.current.value,
+      end: endDateRef.current.value,
       comments: commentsRef.current.value,
     });
-    dateRef.current.value = "";
-    startTimeRef.current.value = "";
-    endTimeRef.current.value = "";
+    startDateRef.current.value = "";
+    endDateRef.current.value = "";
     commentsRef.current.value = "";
   };
   return (
-    <Container>
-      <VacationBalance />
-      <Form onSubmit={leaveRequestHandler}>
-        <FormContainer>
-          <div style={{ backgroundColor: "#fefefa" }}>
-            <Label>Date:</Label>
-            <Input type="date" style={{ height: "12rem" }} ref={dateRef} />
-          </div>
-          <InputsContainer>
-            <div style={{ backgroundColor: "#fefefa" }}>
-              <Label>Start Time:</Label>
-              <Input type="time" ref={startTimeRef} />
-            </div>
-            <div style={{ backgroundColor: "#fefefa" }}>
-              <Label>End Time:</Label>
-              <Input type="time" ref={endTimeRef} />
-            </div>
-            <div style={{ backgroundColor: "#fefefa" }}>
+    <MainContainer>
+      <Container>
+        <Form onSubmit={leaveRequestHandler}>
+          <FormContainer>
+            <InnerContainer>
+              <Label>Start Date:</Label>
               <Input
-                type="text"
-                placeholder="Comments"
-                style={{ marginTop: "1rem" }}
-                ref={commentsRef}
+                type="date"
+                style={{ height: "10rem" }}
+                ref={startDateRef}
               />
-            </div>
-          </InputsContainer>
-        </FormContainer>
-        <Button type="submit">Submit</Button>
-      </Form>
-    </Container>
+              <Input type="text" placeholder="Comments" ref={commentsRef} />
+            </InnerContainer>
+            <InnerContainer>
+              <Label>End Date:</Label>
+              <Input type="date" style={{ height: "10rem" }} ref={endDateRef} />
+              <Button type="submit">Submit</Button>
+            </InnerContainer>
+          </FormContainer>
+        </Form>
+      </Container>
+    </MainContainer>
   );
 }
 
-export default LeaveRequestMain;
+export default SalarySlipMain;

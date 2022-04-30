@@ -6,13 +6,14 @@ import Slogan from "./slogan";
 const Section = styled.section`
   display: grid;
   grid-template-rows: auto 10vh auto 10vh auto 15vh auto;
-  grid-template-columns: auto auto 15vw auto auto;
+  grid-template-columns: 1fr 1fr 10vw 1fr 1fr;
   justify-content: center;
   align-items: center;
+  width: 100%;
 `;
 
 const StyledMainHeader = styled(MainHeader)`
-  grid-area: 1 / 1 / 2 / 5;
+  grid-area: 1 / 1 / 2 / 6;
 `;
 
 const StyledSignin = styled(Signin)`

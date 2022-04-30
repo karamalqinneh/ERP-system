@@ -8,8 +8,8 @@ const Form = styled.form`
   align-items: center;
   width: 30vw;
   padding: 2.5rem;
-  border: 1px solid rgba(9, 200, 195, 0.55);
-  border-radius: 7.5%;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 25px;
   box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.2);
   background: #fdfdfd;
 `;
