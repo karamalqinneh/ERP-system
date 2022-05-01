@@ -4,7 +4,7 @@ const BaseCard = styled.div`
   padding: 2.5rem;
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 30px;
-  box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.2);
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
   background: #fdfdfd;
 `;
 

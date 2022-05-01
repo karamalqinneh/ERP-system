@@ -18,7 +18,24 @@ const Image = styled.img`
   background-color: #fefefa;
 `;
 
-function SalaryTable() {
+function SalaryTable(props) {
+  let data = {
+    month: "May",
+    year: "2022",
+    employee: "Karam Al-Qinneh",
+    paidDays: 30,
+    gender: "Male",
+    lopDays: 0,
+    basicSalary: 600,
+    otHours: 23,
+    otRate: 1.5,
+    otPayment: 300,
+    totalPayment: 900,
+    socialSecurity: 30,
+    otherDeductions: 100,
+    totalDeductions: 130,
+    netPay: 770,
+  };
   return (
     <Table>
       <tbody>
@@ -35,18 +52,18 @@ function SalaryTable() {
         <tr></tr>
         <tr></tr>
         <tr>
-          <Td colSpan="8">Payslip For the Month of August 2019</Td>
+          <Td colSpan="8">
+            Payslip For the Month of {`${data.month}`} {`${data.year}`}{" "}
+          </Td>
         </tr>
         <tr>
-          <Td colSpan="4">Employee Name: Karam Al-Qinneh</Td>
-          <Td colSpan="4">Paid Days:</Td>
+          <Td colSpan="4">Employee Name: {`${data.employee}`} </Td>
+          <Td colSpan="4">Paid Days: {`${data.paidDays}`}</Td>
         </tr>
         <tr>
-          <Td>Gender:</Td>
-          <Td></Td>
-          <Td>Male</Td>
-          <Td></Td>
-          <Td colSpan="4">LOP Days:</Td>
+          <Td colSpan="2">Gender:</Td>
+          <Td colSpan="2">{`${data.gender}`}</Td>
+          <Td colSpan="4">LOP Days: {`${data.lopDays}`}</Td>
         </tr>
         <tr>
           <Td colSpan="2">Earnings</Td>
@@ -56,34 +73,38 @@ function SalaryTable() {
         </tr>
         <tr>
           <Td colSpan="2">Basic</Td>
-          <Td colSpan="2">&nbsp;&nbsp;10,000</Td>
-          <Td colSpan="2">Salary Advnce</Td>
-          <Td colSpan="2">&nbsp;&nbsp;1,000</Td>
+          <Td colSpan="2">&nbsp;&nbsp;{`${data.basicSalary}`}</Td>
+          <Td colSpan="2">Social Security</Td>
+          <Td colSpan="2">&nbsp;&nbsp;{`${data.socialSecurity}`}</Td>
         </tr>
         <tr>
           <Td colSpan="2">OT Hours</Td>
-          <Td colSpan="2">50</Td>
+          <Td colSpan="2">{`${data.otHours}`}</Td>
           <Td colSpan="2">Other Deductions</Td>
-          <Td colSpan="2">0</Td>
+          <Td colSpan="2">{`${data.otherDeductions}`}</Td>
         </tr>
         <tr>
           <Td colSpan="2">OT Rate</Td>
-          <Td colSpan="2">75</Td>
-          <Td colSpan="4" rowSpan="2"></Td>
+          <Td colSpan="2">{`${data.otRate}`}</Td>
+          <Td colSpan="2">Total Deductions</Td>
+          <Td colSpan="2">&nbsp;&nbsp;{`${data.totalDeductions}`}</Td>
         </tr>
         <tr>
           <Td colSpan="2">OT Payment</Td>
-          <Td colSpan="2">&nbsp;&nbsp;3,750</Td>
+          <Td colSpan="2">&nbsp;&nbsp;{`${data.otPayment}`}</Td>
+          <Td colSpan="3" rowSpan="3"></Td>
         </tr>
         <tr>
           <Td colSpan="2">Total Payment</Td>
-          <Td colSpan="2">&nbsp;&nbsp;13,750</Td>
-          <Td colSpan="2">Total Deductions</Td>
-          <Td colSpan="2">&nbsp;&nbsp;1,000</Td>
+          <Td colSpan="2">&nbsp;&nbsp;{`${data.totalPayment}`}</Td>
         </tr>
         <tr>
-          <Td colSpan="2">Net Pay:</Td>
-          <Td colSpan="2">&nbsp;&nbsp;12,750</Td>
+          <Td colSpan="2" style={{ fontWeight: "600" }}>
+            Net Pay:
+          </Td>
+          <Td colSpan="2" style={{ fontWeight: "600" }}>
+            &nbsp;&nbsp;{`${data.netPay}`}
+          </Td>
         </tr>
       </tbody>
     </Table>
