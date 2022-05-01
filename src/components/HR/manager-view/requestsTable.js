@@ -1,7 +1,8 @@
 import styled from "styled-components";
 import logo from "../../../assets/logo.png";
 import Button from "../../../UI/button";
-
+import { useState } from "react";
+import RequestDetailsModal from "./requestDetailModal";
 const Td = styled.td`
   border: 1px solid black;
   background-color: #fefefa;
@@ -31,6 +32,8 @@ const StyledButton = styled(Button)`
 `;
 
 function RequestsTable(props) {
+  const [modalShow, setModalShow] = useState(false);
+
   const acceptHandler = (req) => {
     console.log("ACC", req.id);
   };
@@ -42,35 +45,34 @@ function RequestsTable(props) {
       <>
         <tr key={ele.id}>
           <Td colSpan="2">{ele.employee}</Td>
-          <Td colSpan="2">
+          <Td colSpan="2" onClick={() => setModalShow(true)}>
             <StyledButton>Details</StyledButton>
           </Td>
-          <Td colSpan="2">
-            <StyledButton
-              onClick={() => {
-                acceptHandler(ele);
-              }}
-            >
-              Accept
-            </StyledButton>
+          <Td
+            colSpan="2"
+            onClick={() => {
+              acceptHandler(ele);
+            }}
+          >
+            <StyledButton>Accept</StyledButton>
           </Td>
-          <Td colSpan="2">
-            <StyledButton
-              onClick={() => {
-                console.log(ele);
-                declineHandler(ele);
-              }}
-            >
-              Decline
-            </StyledButton>
+          <Td
+            colSpan="2"
+            onClick={() => {
+              declineHandler(ele);
+            }}
+          >
+            <StyledButton>Decline</StyledButton>
           </Td>
         </tr>
+        <RequestDetailsModal
+          modalData={ele}
+          show={modalShow}
+          onHide={() => setModalShow(false)}
+        />
       </>
     );
   });
-  //   let forms = props.requests.map((ele) => (
-
-  //   ));
   return (
     <Table>
       <tbody>

@@ -7,6 +7,7 @@ import VacationRequestMain from "./vaction-request/vacationRequestMain";
 import data from "../../data";
 import SalarySlipMain from "./salary-slip/salarySlipMain";
 import ManagerViewMain from "./manager-view/managerViewMain";
+import HRMain from "./hr-main/hrMain";
 
 const Section = styled.section`
   display: grid;
@@ -28,7 +29,11 @@ const Div = styled.div`
   margin-left: 4rem;
 `;
 
-const initialState = <Div>Main</Div>;
+const initialState = (
+  <Div>
+    <HRMain />
+  </Div>
+);
 
 const reducer = (state, action) => {
   switch (action.type) {

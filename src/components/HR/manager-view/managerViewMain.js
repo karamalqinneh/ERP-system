@@ -5,16 +5,26 @@ import Button from "../../../UI/button";
 import { useRef, useState } from "react";
 
 const Container = styled(Card)`
-  height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
 `;
 const H1 = styled.h1`
   color: rgb(9, 200, 195);
   width: 100%;
   height: 3vh;
-  font-size: 1.25rem;
+  font-size: 1.6rem;
   text-align: center;
   font-weight: 600;
   background-color: #fefefa;
+`;
+
+const KeysContainer = styled.div`
+  background-color: #fefefe;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
 `;
 
 const Keys = styled(Button)`
@@ -33,6 +43,15 @@ function ManagerViewMain(props) {
     {
       id: "1",
       employee: "Test 1",
+      date: "04-05-2022",
+      startTime: "09:00AM",
+      endTime: "10:00AM",
+      comments: "TEST.....................",
+      employeeBalance: 12.4,
+    },
+    {
+      id: "2",
+      employee: "Test 2",
       date: "04-05-2022",
       startTime: "09:00AM",
       endTime: "10:00AM",
@@ -85,14 +104,10 @@ function ManagerViewMain(props) {
   return (
     <Container>
       <H1>Requests</H1>
-      <div
-        style={{ backgroundColor: "#fefefe", marginTop: "1rem" }}
-        ref={requestDivRef}
-        onClick={classesHandler}
-      >
+      <KeysContainer ref={requestDivRef} onClick={classesHandler}>
         <Keys value={"Leaves"}>Leaves</Keys>
         <Keys value={"Vacations"}>Vacations</Keys>
-      </div>
+      </KeysContainer>
       <RequestsTable requests={renderedData} />
     </Container>
   );
