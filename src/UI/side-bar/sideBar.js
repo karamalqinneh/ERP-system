@@ -13,6 +13,7 @@ const TabsContainer = styled.div`
   flex-direction: column;
   align-items: center;
   background-color: rgb(9, 200, 195);
+  height: 75vh;
 `;
 
 const TabName = styled.div`
@@ -23,6 +24,7 @@ const TabName = styled.div`
   font-size: 1.75rem;
   padding: 3rem 1.5rem;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  height: 25vh;
 `;
 
 const SubTabs = styled.div`
@@ -37,10 +39,11 @@ const SubTabs = styled.div`
 `;
 
 const Footer = styled.footer`
-  margin-top: calc(100vh - 6rem - 11rem);
   background-color: rgb(9, 200, 195);
-  z-index: ;
+  padding: 0.2rem;
+  margin-top: auto;
 `;
+// margin-top: calc(100vh - 6rem - 11rem);
 
 function SideBar(props) {
   let tabs = props.tabsData.map((ele) => (
@@ -53,7 +56,7 @@ function SideBar(props) {
       <TabName>{props.tabName}</TabName>
       <TabsContainer>
         {tabs}
-        <Footer>Karam Al-Qinneh</Footer>
+        <Footer>&copy; Karam Al-Qinneh</Footer>
       </TabsContainer>
     </SideContainer>
   );

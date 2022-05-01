@@ -6,6 +6,7 @@ import LeaveRequestMain from "./leave-request/leaveRequestMain";
 import VacationRequestMain from "./vaction-request/vacationRequestMain";
 import data from "../../data";
 import SalarySlipMain from "./salary-slip/salarySlipMain";
+import ManagerViewMain from "./manager-view/managerViewMain";
 
 const Section = styled.section`
   display: grid;
@@ -50,7 +51,11 @@ const reducer = (state, action) => {
         </Div>
       );
     case "MANAGER":
-      return <Div>Manager</Div>;
+      return (
+        <Div>
+          <ManagerViewMain />
+        </Div>
+      );
     default:
       return initialState;
   }

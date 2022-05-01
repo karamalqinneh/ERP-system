@@ -9,7 +9,8 @@ const Navbar = styled.nav`
   justify-content: flex-start;
   padding: 1rem;
   height: 12.5vh;
-  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+  background-color: #fefefe;
 `;
 
 // const Container = styled.div``;
@@ -25,10 +26,12 @@ const Nav = styled.div`
   font-size: 1.5rem;
   margin-top: 0.4rem;
   margin-left: 0.1rem;
+  background-color: #fefefe;
 `;
 const Image = styled.img`
   width: 4rem;
   height: 2.667rem;
+  background-color: #fefefe;
 `;
 
 function MainHeader(props) {
