@@ -2,13 +2,12 @@ import styled from "styled-components";
 
 const Navbar = styled.nav`
   color: #09c8c3;
-`;
-
-const Container = styled.div`
   display: flex;
   justify-content: flex-end;
   padding: 1rem;
 `;
+
+// const Container = styled.div``;
 
 const Nav = styled.a`
   justify-content: flex-end;
@@ -21,21 +20,17 @@ const Nav = styled.a`
   font-size: 1.1rem;
 `;
 
-function InnerHeader() {
+function InnerHeader(props) {
   return (
-    <>
-      <Navbar>
-        <Container>
-          <Nav href="/home">Home</Nav>
-          <Nav href="/scm">SCM</Nav>
-          <Nav href="/accounting">Accounting</Nav>
-          <Nav href="/hr">HR</Nav>
-          <Nav href="/crm">CRM</Nav>
-          <Nav href="/payments">Payments</Nav>
-          <Nav href="/tracking">Tracking</Nav>
-        </Container>
-      </Navbar>
-    </>
+    <Navbar className={props.className}>
+      <Nav href="/home">Home</Nav>
+      <Nav href="/scm">SCM</Nav>
+      <Nav href="/accounting">Accounting</Nav>
+      <Nav href="/hr">HR</Nav>
+      <Nav href="/crm">CRM</Nav>
+      <Nav href="/payments">Payments</Nav>
+      <Nav href="/tracking">Tracking</Nav>
+    </Navbar>
   );
 }
 
