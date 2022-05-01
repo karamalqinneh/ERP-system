@@ -10,9 +10,9 @@ const Div = styled.div`
   background-color: #fefefa;
 `;
 
-function VacationBalance() {
+function VacationBalance(props) {
   let amount = 12.34;
-  return <Div>Vacation Balance: {amount}</Div>;
+  return <Div className={props.className}>Vacation Balance: {amount}</Div>;
 }
 
 export default VacationBalance;
