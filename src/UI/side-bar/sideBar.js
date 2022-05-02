@@ -6,6 +6,7 @@ const SideContainer = styled.div`
   background-color: rgb(9, 200, 195);
   box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.2);
   color: #fefefa;
+  min-height: 75vh;
 `;
 
 const TabsContainer = styled.div`

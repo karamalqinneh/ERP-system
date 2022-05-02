@@ -22,7 +22,7 @@ function RequestDetailsModal(props) {
             props.modalData.endTime ? props.modalData.startTime : "00:00"
           } until ${
             props.modalData.endTime ? props.modalData.endTime : "00:00"
-          } in the date ${
+          } on the date ${
             props.modalData.startDate
               ? props.modalData.startDate
               : props.modalData.date

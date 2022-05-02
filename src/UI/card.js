@@ -2,10 +2,10 @@ import styled from "styled-components";
 
 const BaseCard = styled.div`
   padding: 2.5rem;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: 30px;
+  border-radius: 10px;
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
   background: #fdfdfd;
+  border: 1px solid rgba(0, 0, 0, 0.1);
 `;
 
 function Card(props) {
