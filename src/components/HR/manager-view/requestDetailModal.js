@@ -6,20 +6,23 @@ function RequestDetailsModal(props) {
       {...props}
       size="sm"
       aria-labelledby="contained-modal-title-vcenter"
-      centered
+      style={{ background: "transparent", height: "auto", marginTop: "15%" }}
     >
-      <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter">
+      <Modal.Header closeButton style={{ backgroundColor: "#fefefe" }}>
+        <Modal.Title
+          style={{ backgroundColor: "#fefefe" }}
+          id="contained-modal-title-vcenter"
+        >
           {`${props.modalData.employee} Request`}
         </Modal.Title>
       </Modal.Header>
-      <Modal.Body>
-        <p>
+      <Modal.Body style={{ backgroundColor: "#fefefe" }}>
+        <p style={{ backgroundColor: "#fefefe" }}>
           {`${props.modalData.employee} is requesting off time from ${
             props.modalData.endTime ? props.modalData.startTime : "00:00"
           } until ${
             props.modalData.endTime ? props.modalData.endTime : "00:00"
-          } in the date ${
+          } on the date ${
             props.modalData.startDate
               ? props.modalData.startDate
               : props.modalData.date
@@ -30,8 +33,16 @@ function RequestDetailsModal(props) {
           }`}
         </p>
       </Modal.Body>
-      <Modal.Footer>
-        <Button onClick={props.onHide}>Close</Button>
+      <Modal.Footer style={{ backgroundColor: "#fefefe" }}>
+        <Button
+          style={{
+            backgroundColor: "rgb(9, 200, 195)",
+            borderColor: "rgb(9, 200, 195)",
+          }}
+          onClick={props.onHide}
+        >
+          Close
+        </Button>
       </Modal.Footer>
     </Modal>
   );

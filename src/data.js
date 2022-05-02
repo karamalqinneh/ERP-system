@@ -32,6 +32,32 @@ let data = (dispatch) => {
         },
       },
     ],
+    CRM: [
+      {
+        tabName: "Search",
+        actionName: () => {
+          dispatch({ type: "SEARCH" });
+        },
+      },
+      {
+        tabName: "Add Customers",
+        actionName: () => {
+          dispatch({ type: "ADD" });
+        },
+      },
+      {
+        tabName: "Generate Leads",
+        actionName: () => {
+          dispatch({ type: "LEAD" });
+        },
+      },
+      {
+        tabName: "Tickets System",
+        actionName: () => {
+          dispatch({ type: "TICKET" });
+        },
+      },
+    ],
   };
 };
 

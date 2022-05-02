@@ -72,7 +72,7 @@ function HRMain() {
         <SecondaryData>
           <Data>Basic Salary: 600</Data>
           <Data>Tenure: 1 year, 5 months</Data>
-          <VacationBalance style={{ color: "red" }} />
+          <Data>Vacation Balance: 12.4</Data>
         </SecondaryData>
         <HistoryTable requestsHistory={requestsHistory} />
         <PendingTable pendingRequests={requestsHistory} />
