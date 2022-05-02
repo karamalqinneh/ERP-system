@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import SideBar from "../../UI/side-bar/sideBar";
 import InnerHeader from "../../UI/headers/inner-headers";
-import { useReducer } from "react";
+import { useReducer, useState } from "react";
 import data from "../../data";
-
+import MainSearch from "./crm-search/main";
 // test
 
 const Section = styled.section`
@@ -31,22 +31,26 @@ const Div = styled.div`
 
 const initialState = <Div>Main</Div>;
 
-const reducer = (state, action) => {
-  switch (action.type) {
-    case "SEARCH":
-      return <Div>Search</Div>;
-    case "ADD":
-      return <Div>Add Customers</Div>;
-    case "LEAD":
-      return <Div>Generate Leads</Div>;
-    case "TICKET":
-      return <Div>Tickets System</Div>;
-    default:
-      return initialState;
-  }
-};
-
 function CRM() {
+  const reducer = (state, action) => {
+    switch (action.type) {
+      case "SEARCH":
+        return (
+          <Div>
+            <MainSearch />
+          </Div>
+        );
+      case "ADD":
+        return <Div>Add Customers</Div>;
+      case "LEAD":
+        return <Div>Generate Leads</Div>;
+      case "TICKET":
+        return <Div>Tickets System</Div>;
+      default:
+        return initialState;
+    }
+  };
+
   const [state, dispatch] = useReducer(reducer, initialState);
   const dataArray = data(dispatch).CRM;
   return (

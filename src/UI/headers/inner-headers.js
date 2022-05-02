@@ -7,8 +7,6 @@ const Navbar = styled.nav`
   padding: 1rem;
 `;
 
-// const Container = styled.div``;
-
 const Nav = styled.a`
   justify-content: flex-end;
   color: rgba(9, 200, 195, 0.55);
