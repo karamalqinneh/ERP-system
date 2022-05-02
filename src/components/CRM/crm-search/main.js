@@ -17,8 +17,8 @@ const Navbar = styled.nav`
   color: #09c8c3;
   display: flex;
   justify-content: flex-end;
-  padding: 1rem;
   background-color: #fefefe;
+  margin-bottom: 2rem;
 `;
 
 const Nav = styled.div`
@@ -29,13 +29,12 @@ const Nav = styled.div`
   padding-right: 0.5rem;
   cursor: pointer;
   font-weight: 500;
-  font-size: 1.1rem;
+  font-size: 1.3rem;
   background-color: #fefefe;
 `;
 
 function MainSearch(props) {
   const [searchResult, setSearchResult] = useState("No Data");
-  const [modalShow, setModalShow] = useState(false);
   useEffect(() => {
     setModalShow(true);
   }, []);
@@ -55,6 +54,7 @@ function MainSearch(props) {
         return initialState;
     }
   };
+  const [modalShow, setModalShow] = useState(false);
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const searchResultHandler = (data) => {
@@ -70,10 +70,10 @@ function MainSearch(props) {
       />
       <Section>
         <Navbar className={props.className}>
-          <Nav onClick={() => dispatch("INFO")}>Info</Nav>
-          <Nav onClick={() => dispatch("TICKETS")}>Tickets</Nav>
-          <Nav onClick={() => dispatch("SALES")}>Sales</Nav>
-          <Nav onClick={() => dispatch("ACTIONS")}>Actions</Nav>
+          <Nav onClick={() => dispatch({ type: "INFO" })}>Info</Nav>
+          <Nav onClick={() => dispatch({ type: "TICKETS" })}>Tickets</Nav>
+          <Nav onClick={() => dispatch({ type: "SALES" })}>Sales</Nav>
+          <Nav onClick={() => dispatch({ type: "ACTIONS" })}>Actions</Nav>
         </Navbar>
         {state}
       </Section>
