@@ -1,9 +1,14 @@
-import { Modal, Button } from "react-bootstrap";
-import { useState } from "react";
+import { Modal, Button, Form } from "react-bootstrap";
+import { useState, useRef } from "react";
 
 function TicketDetailsModal(props) {
+  let commentRef = useRef();
   let [showContact, setShowContact] = useState(false);
   let [showComments, setShowComments] = useState(false);
+  const submitHandler = (e) => {
+    e.preventDefault();
+    console.log(commentRef.current.value);
+  };
   let contactInfo = showContact && (
     <>
       <p style={{ backgroundColor: "#fefefe" }}>
@@ -37,7 +42,43 @@ function TicketDetailsModal(props) {
     );
   }
 
-  let mainContent = showComments ? comments : originalContent;
+  let history = (
+    <>
+      {comments}
+      <Form onSubmit={submitHandler} style={{ backgroundColor: "#fefefe" }}>
+        <Form.Group
+          style={{ backgroundColor: "#fefefe" }}
+          className="mb-3"
+          controlId="formBasicEmail"
+        >
+          <Form.Label style={{ backgroundColor: "#fefefe" }}>
+            New Update
+          </Form.Label>
+          <Form.Control
+            style={{ backgroundColor: "#fefefe" }}
+            ref={commentRef}
+            type="text"
+            placeholder="Enter your comment"
+          />
+
+          <Form.Text className="text-muted"></Form.Text>
+        </Form.Group>
+        <Button
+          style={{
+            backgroundColor: "rgb(9, 200, 195)",
+            borderColor: "rgb(9, 200, 195)",
+            marginLeft: "82.5%",
+          }}
+          variant="primary"
+          type="submit"
+        >
+          Submit
+        </Button>
+      </Form>
+    </>
+  );
+
+  let mainContent = showComments ? history : originalContent;
 
   return (
     <Modal

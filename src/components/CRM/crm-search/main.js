@@ -3,6 +3,7 @@ import Card from "../../../UI/card";
 import CRMSearchModal from "./crmSearchModal";
 import CustomerInfo from "./customerInfo";
 import CustomerTicketsMain from "./customer-tickets/customerTicketsMain";
+import CustomerSalesMain from "./customer-sales/customerSalesMain";
 import { useState, useEffect, useReducer } from "react";
 
 const Section = styled.section`
@@ -48,9 +49,7 @@ function MainSearch(props) {
       case "TICKETS":
         return <CustomerTicketsMain />;
       case "SALES":
-        return <div>Sales</div>;
-      case "ACTIONS":
-        return <div>Actions</div>;
+        return <CustomerSalesMain />;
       default:
         return initialState;
     }
@@ -74,7 +73,6 @@ function MainSearch(props) {
           <Nav onClick={() => dispatch({ type: "INFO" })}>Info</Nav>
           <Nav onClick={() => dispatch({ type: "TICKETS" })}>Tickets</Nav>
           <Nav onClick={() => dispatch({ type: "SALES" })}>Sales</Nav>
-          <Nav onClick={() => dispatch({ type: "ACTIONS" })}>Actions</Nav>
         </Navbar>
         {state}
       </Section>
