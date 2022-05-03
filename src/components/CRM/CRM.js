@@ -4,6 +4,7 @@ import InnerHeader from "../../UI/headers/inner-headers";
 import { useReducer, useState } from "react";
 import data from "../../data";
 import MainSearch from "./crm-search/main";
+import MainTicketsSystem from "./tickets-system/mainTicketsSystem";
 // test
 
 const Section = styled.section`
@@ -45,7 +46,11 @@ function CRM() {
       case "LEAD":
         return <Div>Generate Leads</Div>;
       case "TICKET":
-        return <Div>Tickets System</Div>;
+        return (
+          <Div>
+            <MainTicketsSystem />
+          </Div>
+        );
       default:
         return initialState;
     }

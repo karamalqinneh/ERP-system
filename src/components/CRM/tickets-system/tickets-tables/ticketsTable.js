@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Button from "../../../UI/button";
+import Button from "../../../../UI/button";
 import { useState } from "react";
 import TicketDetailsModal from "./ticketDetailsModal";
 const Td = styled.td`
@@ -15,12 +15,6 @@ const Table = styled.table`
   width: 80%;
   border-radius: 10px;
   margin-top: 1rem;
-`;
-
-const Image = styled.img`
-  width: 3rem;
-  height: 2rem;
-  background-color: #fefefa;
 `;
 
 const StyledButton = styled(Button)`
@@ -63,7 +57,7 @@ function TicketsTable(props) {
     <Table>
       <tbody>
         <tr>
-          <Td colSpan="10">{props.customerName}Tickets</Td>
+          <Td colSpan="10">Tickets</Td>
         </tr>
         <tr>
           <Td colSpan="2">ID</Td>
