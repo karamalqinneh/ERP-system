@@ -20,11 +20,10 @@ const DataVisual = styled.div`
 `;
 
 function CustomerInfo(props) {
-  console.log(props.customer, "FROM CUSINFO");
   let [customerData, setCustomerData] = useState(props.customer);
   useEffect(() => {
     console.log(customerData, "FROM CUSINFO2");
-  }, [customerData]);
+  }, []);
   return (
     <div style={{ marginLeft: "10%" }}>
       <DataVisual>

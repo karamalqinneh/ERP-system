@@ -2,6 +2,7 @@ import styled from "styled-components";
 import Card from "../../../UI/card";
 import CRMSearchModal from "./crmSearchModal";
 import CustomerInfo from "./customerInfo";
+import CustomerTicketsMain from "./customer-tickets/customerTicketsMain";
 import { useState, useEffect, useReducer } from "react";
 
 const Section = styled.section`
@@ -45,7 +46,7 @@ function MainSearch(props) {
       case "INFO":
         return <CustomerInfo customer={searchResult} />;
       case "TICKETS":
-        return <div>Tickets</div>;
+        return <CustomerTicketsMain />;
       case "SALES":
         return <div>Sales</div>;
       case "ACTIONS":
