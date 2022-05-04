@@ -4,7 +4,9 @@ import InnerHeader from "../../UI/headers/inner-headers";
 import { useReducer, useState } from "react";
 import data from "../../data";
 import MainSearch from "./crm-search/main";
-// test
+import MainTicketsSystem from "./tickets-system/mainTicketsSystem";
+import CustomersList from "./customer-list/customersListMain";
+import AddCustomerForm from "./add-customers/addCustomersForm";
 
 const Section = styled.section`
   display: grid;
@@ -41,11 +43,23 @@ function CRM() {
           </Div>
         );
       case "ADD":
-        return <Div>Add Customers</Div>;
-      case "LEAD":
-        return <Div>Generate Leads</Div>;
+        return (
+          <Div>
+            <AddCustomerForm />
+          </Div>
+        );
+      case "LIST":
+        return (
+          <Div>
+            <CustomersList />
+          </Div>
+        );
       case "TICKET":
-        return <Div>Tickets System</Div>;
+        return (
+          <Div>
+            <MainTicketsSystem />
+          </Div>
+        );
       default:
         return initialState;
     }

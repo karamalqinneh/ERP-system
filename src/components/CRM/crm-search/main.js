@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import Card from "../../../UI/card";
 import CRMSearchModal from "./crmSearchModal";
 import CustomerInfo from "./customerInfo";
 import CustomerTicketsMain from "./customer-tickets/customerTicketsMain";

@@ -1,7 +1,7 @@
-import TicketsTable from "../../tickets-system/tickets-tables/ticketsTable";
+import TicketsTable from "../tickets-tables/ticketsTable";
 import { useEffect } from "react";
 
-function CustomerTicketsMain(props) {
+function OpenTickets(props) {
   let customerTickets = [
     {
       id: "1",
@@ -30,4 +30,4 @@ function CustomerTicketsMain(props) {
   return <TicketsTable tickets={customerTickets} customerName="John Doe " />;
 }
 
-export default CustomerTicketsMain;
+export default OpenTickets;
