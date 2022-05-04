@@ -77,18 +77,6 @@ function RequestsTable(props) {
     <Table>
       <tbody>
         <tr>
-          <Td colSpan="2" rowSpan="5">
-            <Image src={logo} />
-          </Td>
-          <Td colSpan="6" rowSpan="5">
-            Demo Company
-          </Td>
-        </tr>
-        <tr></tr>
-        <tr></tr>
-        <tr></tr>
-        <tr></tr>
-        <tr>
           <Td colSpan="8">Requests</Td>
         </tr>
         {rows}
