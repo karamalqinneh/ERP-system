@@ -5,7 +5,8 @@ import { useReducer, useState } from "react";
 import data from "../../data";
 import MainSearch from "./crm-search/main";
 import MainTicketsSystem from "./tickets-system/mainTicketsSystem";
-// test
+import CustomersList from "./customer-list/customersListMain";
+import AddCustomerForm from "./add-customers/addCustomersForm";
 
 const Section = styled.section`
   display: grid;
@@ -42,9 +43,17 @@ function CRM() {
           </Div>
         );
       case "ADD":
-        return <Div>Add Customers</Div>;
-      case "LEAD":
-        return <Div>Generate Leads</Div>;
+        return (
+          <Div>
+            <AddCustomerForm />
+          </Div>
+        );
+      case "LIST":
+        return (
+          <Div>
+            <CustomersList />
+          </Div>
+        );
       case "TICKET":
         return (
           <Div>

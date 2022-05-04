@@ -46,9 +46,9 @@ let data = (dispatch) => {
         },
       },
       {
-        tabName: "Generate Leads",
+        tabName: "Customers List",
         actionName: () => {
-          dispatch({ type: "LEAD" });
+          dispatch({ type: "LIST" });
         },
       },
       {
