@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import AddItems from "./addItems";
+import Stock from "./stock-managment/stock";
 import { useState, useEffect, useReducer, useRef } from "react";
 
 const Section = styled.section`
@@ -48,36 +49,34 @@ function MainWarehouse(props) {
       case "ADD":
         return <AddItems />;
       case "STOCK":
-        return <div>Stock</div>;
+        return <Stock />;
       default:
         return initialState;
     }
   };
   const [state, dispatch] = useReducer(reducer, initialState);
   return (
-    <>
-      <Section>
-        <Navbar className={props.className} ref={navRef}>
-          <Nav
-            onClick={(e) => {
-              activeHandler(e);
-              dispatch({ type: "ADD" });
-            }}
-          >
-            Add Items
-          </Nav>
-          <Nav
-            onClick={(e) => {
-              activeHandler(e);
-              dispatch({ type: "STOCK" });
-            }}
-          >
-            Stock Managment
-          </Nav>
-        </Navbar>
-        {state}
-      </Section>
-    </>
+    <Section>
+      <Navbar className={props.className} ref={navRef}>
+        <Nav
+          onClick={(e) => {
+            activeHandler(e);
+            dispatch({ type: "ADD" });
+          }}
+        >
+          Add Items
+        </Nav>
+        <Nav
+          onClick={(e) => {
+            activeHandler(e);
+            dispatch({ type: "STOCK" });
+          }}
+        >
+          Stock Managment
+        </Nav>
+      </Navbar>
+      {state}
+    </Section>
   );
 }
 

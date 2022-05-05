@@ -11,23 +11,25 @@ import HRMain from "./hr-main/hrMain";
 
 const Section = styled.section`
   display: grid;
-  grid-template-rows: auto 10vh 1fr 10vh;
-  grid-template-columns: auto 5vw 1fr 1fr 5vw;
-  width: 100%;
-  height: 100%;
-`;
-
-const StyledSideBar = styled(SideBar)`
-  grid-area: 1 / 1 / 5 / 2;
+  grid-template-rows: auto 5vw 1fr 10vh;
+  grid-template-columns: 1fr 2vw;
+  width: 80vw;
+  height: 100vh;
+  position: fixed;
+  left: 20vw;
+  overflow-y: auto;
 `;
 
 const StyledInnerHeader = styled(InnerHeader)`
-  grid-area: 1 / 4 / 2 / 6;
+  grid-area: 1 / 1 / 2 / 3;
 `;
 const Div = styled.div`
-  grid-area: 3 / 3 / 5 / 5;
+  grid-area: 3 / 1 / 4 / 2;
   margin-left: 4rem;
+  height: 10vh;
+  border-radius: 3px;
 `;
+// background-color: #fefefe;
 
 const initialState = (
   <Div>
@@ -70,11 +72,13 @@ function HR() {
   const [state, dispatch] = useReducer(reducer, initialState);
   const dataArray = data(dispatch).HR;
   return (
-    <Section>
-      <StyledInnerHeader></StyledInnerHeader>
-      <StyledSideBar tabsData={dataArray} tabName="HR"></StyledSideBar>
-      {state}
-    </Section>
+    <div style={{ display: "flex" }}>
+      <SideBar tabsData={dataArray} tabName="HR"></SideBar>
+      <Section>
+        <StyledInnerHeader></StyledInnerHeader>
+        {state}
+      </Section>
+    </div>
   );
 }
 

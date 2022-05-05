@@ -72,12 +72,6 @@ let data = (dispatch) => {
         },
       },
       {
-        tabName: "Lean Managment",
-        actionName: () => {
-          dispatch({ type: "LEAN" });
-        },
-      },
-      {
         tabName: "Analytics and Reports",
         actionName: () => {
           dispatch({ type: "REPORTS" });

@@ -6,3 +6,28 @@
   background-color: #f3f2ef;
   /* background-color: #fefefa; */
 }
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::selection {
+  background: rgb(9, 200, 195);
+  color: #fefefe;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(9, 200, 195);
+  border-radius: 30px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(216, 216, 216);
+}

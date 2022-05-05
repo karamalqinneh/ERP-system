@@ -1,27 +1,27 @@
 import styled from "styled-components";
 import SideBar from "../../UI/side-bar/sideBar";
 import InnerHeader from "../../UI/headers/inner-headers";
-import { useReducer, useState } from "react";
+import { useReducer } from "react";
 import data from "../../data";
 import MainWarehouse from "./warehouse-managment/warehouseMain";
+import SuppliersMain from "./suppliers/suppliersMain";
 
 const Section = styled.section`
   display: grid;
-  grid-template-rows: auto 10vh 1fr 10vh;
-  grid-template-columns: auto 5vw 1fr 1fr 5vw;
-  width: 100%;
-  height: 100%;
-`;
-
-const StyledSideBar = styled(SideBar)`
-  grid-area: 1 / 1 / 5 / 2;
+  grid-template-rows: auto 5vh 1fr 10vh;
+  grid-template-columns: 1fr 2vw;
+  width: 80vw;
+  height: 100vh;
+  position: fixed;
+  left: 20vw;
+  overflow-y: auto;
 `;
 
 const StyledInnerHeader = styled(InnerHeader)`
-  grid-area: 1 / 4 / 2 / 6;
+  grid-area: 1 / 1 / 2 / 3;
 `;
 const Div = styled.div`
-  grid-area: 3 / 3 / 5 / 5;
+  grid-area: 3 / 1 / 4 / 2;
   margin-left: 4rem;
   height: 10vh;
   background-color: #fefefe;
@@ -30,7 +30,7 @@ const Div = styled.div`
 
 const initialState = (
   <Div>
-    <MainWarehouse />;
+    <MainWarehouse />
   </Div>
 );
 
@@ -40,7 +40,11 @@ function SCM() {
       case "WAREHOUSE":
         return initialState;
       case "SUPPLIERS":
-        return <Div>SUPPLIERS</Div>;
+        return (
+          <Div>
+            <SuppliersMain></SuppliersMain>
+          </Div>
+        );
       case "LEAN":
         return <Div>ITEM</Div>;
       case "REPORTS":
@@ -53,11 +57,13 @@ function SCM() {
   const [state, dispatch] = useReducer(reducer, initialState);
   const dataArray = data(dispatch).SCM;
   return (
-    <Section>
-      <StyledInnerHeader></StyledInnerHeader>
-      <StyledSideBar tabsData={dataArray} tabName="SCM"></StyledSideBar>
-      {state}
-    </Section>
+    <div style={{ display: "flex" }}>
+      <SideBar tabsData={dataArray} tabName="SCM"></SideBar>
+      <Section>
+        <StyledInnerHeader></StyledInnerHeader>
+        {state}
+      </Section>
+    </div>
   );
 }
 
