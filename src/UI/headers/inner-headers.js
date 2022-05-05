@@ -23,11 +23,10 @@ function InnerHeader(props) {
     <Navbar className={props.className}>
       <Nav href="/home">Home</Nav>
       <Nav href="/scm">SCM</Nav>
-      <Nav href="/accounting">Accounting</Nav>
       <Nav href="/hr">HR</Nav>
       <Nav href="/crm">CRM</Nav>
-      <Nav href="/payments">Payments</Nav>
-      <Nav href="/tracking">Tracking</Nav>
+      <Nav href="/sales">Sales</Nav>
+      <Nav href="/accounting">Accounting</Nav>
     </Navbar>
   );
 }

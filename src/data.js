@@ -58,6 +58,32 @@ let data = (dispatch) => {
         },
       },
     ],
+    SCM: [
+      {
+        tabName: "Warehouse Managment",
+        actionName: () => {
+          dispatch({ type: "WAREHOUSE" });
+        },
+      },
+      {
+        tabName: "Suppliers",
+        actionName: () => {
+          dispatch({ type: "SUPPLIERS" });
+        },
+      },
+      {
+        tabName: "Lean Managment",
+        actionName: () => {
+          dispatch({ type: "LEAN" });
+        },
+      },
+      {
+        tabName: "Analytics and Reports",
+        actionName: () => {
+          dispatch({ type: "REPORTS" });
+        },
+      },
+    ],
   };
 };
 
