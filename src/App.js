@@ -4,6 +4,7 @@ import Signin from "./components/auth/login";
 import HR from "./components/HR/HR";
 import CRM from "./components/CRM/CRM";
 import SCM from "./components/SCM/SCM";
+import Sales from "./components/sales/sales";
 
 function App() {
   return (
@@ -16,7 +17,7 @@ function App() {
           <Route path="/hr/*" element={<HR />} />
           <Route path="/crm/*" element={<CRM />} />
           <Route path="/accounting/*" element={<Home />} />
-          <Route path="/sales/*" element={<Home />} />
+          <Route path="/sales/*" element={<Sales />} />
         </Routes>
       </BrowserRouter>
     </>

@@ -78,6 +78,26 @@ let data = (dispatch) => {
         },
       },
     ],
+    sales: [
+      {
+        tabName: "Sales",
+        actionName: () => {
+          dispatch({ type: "SALES" });
+        },
+      },
+      {
+        tabName: "Purchases",
+        actionName: () => {
+          dispatch({ type: "PURCHASES" });
+        },
+      },
+      {
+        tabName: "Analytics and Reports",
+        actionName: () => {
+          dispatch({ type: "REPORTS" });
+        },
+      },
+    ],
   };
 };
 

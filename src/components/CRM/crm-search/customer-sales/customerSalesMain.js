@@ -1,4 +1,4 @@
-import SalesHistoyTable from "../../../sales/sales-history/salesHistoryTable";
+import SalesHistoyTable from "../../../sales/sales/sales-history/salesHistoryTable";
 import { useEffect } from "react";
 
 function CustomerSalesMain(props) {

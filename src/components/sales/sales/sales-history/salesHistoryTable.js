@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Button from "../../../UI/button";
+import Button from "../../../../UI/button";
 import { useState } from "react";
 import SalesHistoyDetailsModal from "./salesHistoryDetailsModal";
 const Td = styled.td`
