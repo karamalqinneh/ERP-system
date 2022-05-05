@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Form, Button } from "react-bootstrap";
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState } from "react";
 import ItemAdded from "./itemAdded";
 
 const Header = styled.h1`
@@ -48,7 +48,7 @@ const StyledButton = styled(Button)`
 
 function AddItems() {
   let [showModal, setShowModal] = useState(false);
-  let itemTypeeRef = useRef();
+  let itemTypeRef = useRef();
   let modelNameRef = useRef();
   let supplierNameRef = useRef();
   let quantityRef = useRef();
@@ -59,7 +59,7 @@ function AddItems() {
   const newItemSubmitHandler = (e) => {
     e.preventDefault();
     body = {
-      itemTypee: itemTypeeRef.current.value,
+      itemType: itemTypeRef.current.value,
       modelName: modelNameRef.current.value,
       supplierName: supplierNameRef.current.value,
       quantity: quantityRef.current.value,
@@ -83,7 +83,7 @@ function AddItems() {
           <InputGroup>
             <Label>Item Type:</Label>
             <Input
-              ref={itemTypeeRef}
+              ref={itemTypeRef}
               type="text"
               placeholder="Enter Item Type"
             />

@@ -7,6 +7,9 @@ const SideContainer = styled.div`
   box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.2);
   color: #fefefa;
   min-height: 75vh;
+  position: fixed;
+  top: 0;
+  left: 0;
 `;
 
 const TabsContainer = styled.div`
@@ -14,7 +17,7 @@ const TabsContainer = styled.div`
   flex-direction: column;
   align-items: center;
   background-color: rgb(9, 200, 195);
-  height: 100%;
+  height: 75vh;
 `;
 
 const TabName = styled.div`
