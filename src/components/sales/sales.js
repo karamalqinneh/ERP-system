@@ -6,6 +6,7 @@ import data from "../../data";
 import SalesMain from "./sales/salesMain";
 import PurchasesMain from "./purchases/purchasesMain";
 import { Card } from "react-bootstrap";
+import LoggedinHeader from "../../UI/headers/loggedinHeader";
 
 const Section = styled.section`
   display: grid;
@@ -55,13 +56,16 @@ function Sales() {
   const [state, dispatch] = useReducer(reducer, initialState);
   const dataArray = data(dispatch).sales;
   return (
-    <div style={{ display: "flex" }}>
-      <SideBar tabsData={dataArray} tabName="Sales"></SideBar>
-      <Section>
-        <StyledInnerHeader></StyledInnerHeader>
-        {state}
-      </Section>
-    </div>
+    <>
+      <LoggedinHeader />
+      <div style={{ display: "flex" }}>
+        <SideBar tabsData={dataArray} tabName="Sales"></SideBar>
+        <Section>
+          <StyledInnerHeader></StyledInnerHeader>
+          {state}
+        </Section>
+      </div>
+    </>
   );
 }
 

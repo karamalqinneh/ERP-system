@@ -5,6 +5,7 @@ import HR from "./components/HR/HR";
 import CRM from "./components/CRM/CRM";
 import SCM from "./components/SCM/SCM";
 import Sales from "./components/sales/sales";
+import LoggedinHeader from "./UI/headers/loggedinHeader";
 
 function App() {
   return (
@@ -12,7 +13,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/home/*" element={<Home />} />
+          <Route path="/home/*" element={<LoggedinHeader />} />
           <Route path="/scm/*" element={<SCM />} />
           <Route path="/hr/*" element={<HR />} />
           <Route path="/crm/*" element={<CRM />} />

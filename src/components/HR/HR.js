@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import SideBar from "../../UI/side-bar/sideBar";
 import InnerHeader from "../../UI/headers/inner-headers";
+import LoggedinHeader from "../../UI/headers/loggedinHeader";
 import { useReducer } from "react";
 import LeaveRequestMain from "./leave-request/leaveRequestMain";
 import VacationRequestMain from "./vaction-request/vacationRequestMain";
@@ -71,14 +72,18 @@ const reducer = (state, action) => {
 function HR() {
   const [state, dispatch] = useReducer(reducer, initialState);
   const dataArray = data(dispatch).HR;
+
   return (
-    <div style={{ display: "flex" }}>
-      <SideBar tabsData={dataArray} tabName="HR"></SideBar>
-      <Section>
-        <StyledInnerHeader></StyledInnerHeader>
-        {state}
-      </Section>
-    </div>
+    <>
+      <LoggedinHeader />
+      <div style={{ display: "flex" }}>
+        <SideBar tabsData={dataArray} tabName="HR"></SideBar>
+        <Section>
+          <StyledInnerHeader></StyledInnerHeader>
+          {state}
+        </Section>
+      </div>
+    </>
   );
 }
 

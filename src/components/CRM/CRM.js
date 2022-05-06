@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import SideBar from "../../UI/side-bar/sideBar";
 import InnerHeader from "../../UI/headers/inner-headers";
+import LoggedinHeader from "../../UI/headers/loggedinHeader";
 import { useReducer, useState } from "react";
 import data from "../../data";
 import MainSearch from "./crm-search/main";
@@ -68,14 +69,18 @@ function CRM() {
 
   const [state, dispatch] = useReducer(reducer, initialState);
   const dataArray = data(dispatch).CRM;
+
   return (
-    <div style={{ display: "flex" }}>
-      <SideBar tabsData={dataArray} tabName="CRM"></SideBar>
-      <Section>
-        <StyledInnerHeader></StyledInnerHeader>
-        {state}
-      </Section>
-    </div>
+    <>
+      <LoggedinHeader />
+      <div style={{ display: "flex" }}>
+        <SideBar tabsData={dataArray} tabName="CRM"></SideBar>
+        <Section>
+          <StyledInnerHeader></StyledInnerHeader>
+          {state}
+        </Section>
+      </div>
+    </>
   );
 }
 

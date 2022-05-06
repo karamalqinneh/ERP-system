@@ -5,6 +5,7 @@ import { useReducer } from "react";
 import data from "../../data";
 import MainWarehouse from "./warehouse-managment/warehouseMain";
 import SuppliersMain from "./suppliers/suppliersMain";
+import LoggedinHeader from "../../UI/headers/loggedinHeader";
 
 const Section = styled.section`
   display: grid;
@@ -57,13 +58,16 @@ function SCM() {
   const [state, dispatch] = useReducer(reducer, initialState);
   const dataArray = data(dispatch).SCM;
   return (
-    <div style={{ display: "flex" }}>
-      <SideBar tabsData={dataArray} tabName="SCM"></SideBar>
-      <Section>
-        <StyledInnerHeader></StyledInnerHeader>
-        {state}
-      </Section>
-    </div>
+    <>
+      <LoggedinHeader />
+      <div style={{ display: "flex" }}>
+        <SideBar tabsData={dataArray} tabName="SCM"></SideBar>
+        <Section>
+          <StyledInnerHeader></StyledInnerHeader>
+          {state}
+        </Section>
+      </div>
+    </>
   );
 }
 
