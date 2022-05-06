@@ -8,14 +8,15 @@ A software that manages a company's financials, supply chain, customers, reporti
 
 Human Resources:
 
-- a simple system for the employee to request leave & vactions
-- a simple portal for the managers to track employees requests
 - basic salary slips for the employees to request at anytime
+- a simple system for the employee to request leaves & vactions
+- a simple portal for the managers to track employees requests
 
 SCM:
 
 - items catalogue with basic information
 - basic warehousing – only for accounting inventory quantities and prices
+- basic suppliers managment – only for accounting products and account sizes
 
 CRM:
 
