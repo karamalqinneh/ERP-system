@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { useRef } from "react";
 
 const SideContainer = styled.div`
   width: 20vw;
@@ -8,7 +9,7 @@ const SideContainer = styled.div`
   color: #fefefa;
   min-height: 75vh;
   position: fixed;
-  top: 0;
+  top: 10vh;
   left: 0;
 `;
 
@@ -17,7 +18,7 @@ const TabsContainer = styled.div`
   flex-direction: column;
   align-items: center;
   background-color: rgb(9, 200, 195);
-  height: 75vh;
+  height: 65vh;
 `;
 
 const TabName = styled.div`
@@ -40,6 +41,10 @@ const SubTabs = styled.div`
   text-align: center;
   cursor: pointer;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  &.active {
+    background-color: rgb(9, 175, 175);
+    border-left: 10px solid #fefefe;
+  }
 `;
 
 const Footer = styled.footer`
@@ -49,15 +54,28 @@ const Footer = styled.footer`
 `;
 
 function SideBar(props) {
+  const navRef = useRef();
+  const activeHandler = (e) => {
+    console.log(navRef.current.children);
+    const children = [].slice.call(navRef.current.children);
+    children.forEach((ele) => ele.classList.remove("active"));
+    e.target.classList.add("active");
+  };
+
   let tabs = props.tabsData.map((ele) => (
-    <SubTabs key={ele.tabName} onClick={ele.actionName}>
+    <SubTabs
+      key={ele.tabName}
+      onClick={() => {
+        ele.actionName();
+      }}
+    >
       {ele.tabName}
     </SubTabs>
   ));
   return (
     <SideContainer className={props.className}>
       <TabName>{props.tabName}</TabName>
-      <TabsContainer>
+      <TabsContainer ref={navRef} onClick={activeHandler}>
         {tabs}
         <Footer>&copy; Karam Al-Qinneh</Footer>
       </TabsContainer>
