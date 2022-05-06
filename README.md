@@ -6,12 +6,28 @@ A software that manages a company's financials, supply chain, customers, reporti
 
 ### V1.0.0:
 
-- the item catalogue with basic information
-- basic warehousing – only for accounting inventory quantities and prices
-- basic purchases to make item purchasing possible in the simplest scenarios
-- basic sales to simulate selling of contracted items
-- a chart of accounts – only to accommodate purchasing and cost calculations
+Human Resources:
+
 - a simple system for the employee to request leave & vactions
 - a simple portal for the managers to track employees requests
 - basic salary slips for the employees to request at anytime
-- an integrated CRM system that contains all the customers info and a tickets system.
+
+SCM:
+
+- the item catalogue with basic information
+- basic warehousing – only for accounting inventory quantities and prices
+
+CRM:
+
+- an integrated CRM system that contains all the customers info
+- basic customer database
+- a tickets system to track all customers issues
+
+Sales:
+
+- basic purchases to make item purchasing possible in the simplest scenarios
+- basic sales to simulate selling of contracted items
+
+Accounting:
+
+- a chart of accounts – only to accommodate purchasing and cost calculations
