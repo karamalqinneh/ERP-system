@@ -17,8 +17,8 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  border-top: 2vh solid rgba(9, 200, 195, 0.5);
-  border-bottom: 2vh solid rgba(9, 200, 195, 0.5);
+  border-top: 2vh solid rgba(9, 200, 195, 0.8);
+  border-bottom: 2vh solid rgba(9, 200, 195, 0.8);
   animation: ${float} 3s linear infinite;
   border-radius: 25px;
   text-transform: capitalize;

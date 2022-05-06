@@ -9,6 +9,7 @@
 
 ::-webkit-scrollbar {
   width: 10px;
+  display: none;
 }
 
 ::selection {
