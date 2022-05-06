@@ -4,6 +4,7 @@ import InnerHeader from "../../UI/headers/inner-headers";
 import { useReducer } from "react";
 import data from "../../data";
 import SalesMain from "./sales/salesMain";
+import PurchasesMain from "./purchases/purchasesMain";
 import { Card } from "react-bootstrap";
 
 const Section = styled.section`
@@ -39,7 +40,11 @@ function Sales() {
       case "SALES":
         return initialState;
       case "PURCHASES":
-        return <Div>PURCHASES</Div>;
+        return (
+          <Div>
+            <PurchasesMain />
+          </Div>
+        );
       case "REPORTS":
         return <Div>Analytics and Reports</Div>;
       default:

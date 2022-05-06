@@ -1,7 +1,8 @@
 import styled from "styled-components";
-import Button from "../../../../UI/button";
+import Button from "../../../../../UI/button";
 import { useState } from "react";
-import SalesHistoyDetailsModal from "./salesHistoryDetailsModal";
+import PurchasesHistoyDetailsModal from "./purchaseHistoryDetailsModal";
+
 const Td = styled.td`
   border: 1px solid black;
   background-color: #fefefa;
@@ -24,7 +25,7 @@ const StyledButton = styled(Button)`
   margin-top: 0rem;
 `;
 
-function SalesHistoyTable(props) {
+function PurchasesHistoyTable(props) {
   const [modalShow, setModalShow] = useState(false);
   // send a request to get his name and contact info
   let user = {
@@ -32,11 +33,11 @@ function SalesHistoyTable(props) {
     email: "johndoe@gmail.com",
     phone: "962790499988",
   };
-  let rows = props.sales.map((ele) => {
+  let rows = props.purchases.map((ele) => {
     return (
       <>
         <tr key={ele.id}>
-          <Td colSpan="2">{ele.salesID}</Td>
+          <Td colSpan="2">{ele.purchaseID}</Td>
           <Td colSpan="2">{ele.status}</Td>
           <Td colSpan="2">{ele.orderDate}</Td>
           <Td colSpan="2">{ele.productGroup}</Td>
@@ -45,7 +46,7 @@ function SalesHistoyTable(props) {
             <StyledButton>Details</StyledButton>
           </Td>
         </tr>
-        <SalesHistoyDetailsModal
+        <PurchasesHistoyDetailsModal
           orderData={ele}
           userData={user}
           show={modalShow}
@@ -58,12 +59,12 @@ function SalesHistoyTable(props) {
     <Table>
       <tbody>
         <tr>
-          <Td colSpan="12">Orders History</Td>
+          <Td colSpan="12">Purchases History</Td>
         </tr>
         <tr>
           <Td colSpan="2">ID</Td>
           <Td colSpan="2">State</Td>
-          <Td colSpan="2">Order Date</Td>
+          <Td colSpan="2">Purchase Date</Td>
           <Td colSpan="2">Product Group</Td>
           <Td colSpan="2">Product</Td>
           <Td colSpan="2">Details</Td>
@@ -74,4 +75,4 @@ function SalesHistoyTable(props) {
   );
 }
 
-export default SalesHistoyTable;
+export default PurchasesHistoyTable;

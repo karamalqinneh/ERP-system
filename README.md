@@ -14,7 +14,7 @@ Human Resources:
 
 SCM:
 
-- the item catalogue with basic information
+- items catalogue with basic information
 - basic warehousing – only for accounting inventory quantities and prices
 
 CRM:
