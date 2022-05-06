@@ -4,19 +4,20 @@ import { useEffect } from "react";
 function CustomerSalesMain(props) {
   let customerSales = [
     {
-      id: "1",
-      status: "Closed",
-      product: "Ball Valve",
-      orderDate: "04-05-2022",
-      details: {
-        quantity: 300,
-        unitPrice: 2.25,
-        netPrice: 750,
-        tax: { taxExemption: true, VAT: 2.5 },
-        totalPaymentAmount: 779,
-        paymentMethod: "L/C",
-        fullfillmentDate: "04-06-2022",
-      },
+      salesID: 1,
+      customerID: 25,
+      productGroup: "Mechanical",
+      product: "Ball Bearings",
+      status: "pending",
+      modelName: "BB 212",
+      supplierName: "Test Supplies",
+      quantity: 22,
+      taxExemption: true,
+      vat: 6.4,
+      unitPrice: 33,
+      paymentMethod: "L/C",
+      orderDate: "2022-05-04",
+      fullfillmentDate: "2022-05-22",
     },
   ];
 

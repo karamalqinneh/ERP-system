@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { useReducer, useRef } from "react";
-import NewDeal from "./new-deal/newDeal";
-import SalesHistory from "./sales-history/salesHistoryMain";
+import NewPurchase from "./new-purchase/newPurchase";
+import PurchasesHistoryMain from "./purchases-history/sales-history/purchasesHistoryMain";
 
 const Section = styled.section`
   display: flex;
@@ -35,21 +35,21 @@ const Nav = styled.div`
   }
 `;
 
-function SalesMain(props) {
+function PurchasesMain(props) {
   const navRef = useRef();
   const activeHandler = (e) => {
     const children = [].slice.call(navRef.current.children);
     children.forEach((ele) => ele.classList.remove("active"));
     e.target.classList.add("active");
   };
-  const initialState = <NewDeal />;
+  const initialState = <NewPurchase />;
 
   const reducer = (state, action) => {
     switch (action.type) {
       case "NEW":
         return initialState;
       case "HISTORY":
-        return <SalesHistory />;
+        return <PurchasesHistoryMain />;
       default:
         return initialState;
     }
@@ -64,7 +64,7 @@ function SalesMain(props) {
             dispatch({ type: "NEW" });
           }}
         >
-          New Deal
+          New Purchase
         </Nav>
         <Nav
           onClick={(e) => {
@@ -72,7 +72,7 @@ function SalesMain(props) {
             dispatch({ type: "HISTORY" });
           }}
         >
-          Sales History
+          Purchases History
         </Nav>
       </Navbar>
       {state}
@@ -80,4 +80,4 @@ function SalesMain(props) {
   );
 }
 
-export default SalesMain;
+export default PurchasesMain;

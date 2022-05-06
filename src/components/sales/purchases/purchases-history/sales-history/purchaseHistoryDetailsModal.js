@@ -18,7 +18,7 @@ const DataVisual = styled.div`
   background-color: #fefefe;
 `;
 
-function SalesHistoyDetailsModal(props) {
+function PurchasesHistoyDetailsModal(props) {
   return (
     <Modal
       {...props}
@@ -95,4 +95,4 @@ function SalesHistoyDetailsModal(props) {
   );
 }
 
-export default SalesHistoyDetailsModal;
+export default PurchasesHistoyDetailsModal;
