@@ -101,7 +101,7 @@ function Integerations() {
       <Container>
         <Data>
           <Title>
-            <SubTitle>Daftra</SubTitle> Integrated Business Apps
+            <SubTitle>OUR</SubTitle> Integrated Business Apps
           </Title>
           <Desc>
             Performing equally effectively, separately and simultaneously - Use
