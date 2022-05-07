@@ -2,7 +2,7 @@ import styled from "styled-components";
 import sales from "../../../assets/icons/receipt.svg";
 import accounting from "../../../assets/icons/cash.svg";
 import CRM from "../../../assets/icons/CRM.svg";
-import HR from "../../../assets/icons/HR.png";
+import HR from "../../../assets/icons/HR.svg";
 import SCM from "../../../assets/icons/package.svg";
 
 const Section = styled.section`
@@ -92,10 +92,6 @@ const GridContent = styled.p`
 `;
 
 function Integerations() {
-  //     import accounting from "../../../assets/icons/cash.svg";
-  // import CRM from "../../../assets/icons/CRM.svg";
-  // import HR from "../../../assets/icons/HR.png";
-  // import SCM from "../../../assets/icons/package.svg";
   return (
     <Section>
       <Container>

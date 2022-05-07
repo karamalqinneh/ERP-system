@@ -2,12 +2,14 @@ import styled from "styled-components";
 import HeaderBar from "./header/headerBar";
 import Intro from "./sections/intro";
 import Integerations from "./sections/integerations";
+import FitSection from "./sections/fitSection";
+import Footer from "./footer/footer";
 
 const Body = styled.section`
-  height: 300vh;
   width: 100vw;
   background-color: #fefefe;
 `;
+// height: 300vh;
 
 function LandingPage() {
   return (
@@ -16,6 +18,8 @@ function LandingPage() {
       <Body>
         <Intro />
         <Integerations />
+        <FitSection />
+        <Footer />
       </Body>
     </>
   );
