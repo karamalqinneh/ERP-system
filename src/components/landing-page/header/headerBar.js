@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import Button from "../../../UI/button";
 import { keyframes } from "styled-components";
 import { useState } from "react";
 
@@ -64,7 +63,17 @@ const fill = keyframes`
 }
 `;
 
-const StyledButton = styled(Button)`
+const StyledButton = styled.a`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: initial;
   height: 7.5vh;
   width: 15vw;
   margin: 0;
@@ -98,7 +107,7 @@ function HeaderBar() {
         <Link>Features</Link>
         <Link>Contact Us</Link>
       </Nav>
-      <StyledButton>Try Now</StyledButton>
+      <StyledButton href="/home">Try Now</StyledButton>
     </Header>
   ) : (
     <MainHeader>
@@ -108,7 +117,7 @@ function HeaderBar() {
         <Link>Features</Link>
         <Link>Contact Us</Link>
       </Nav>
-      <StyledButton>Try Now</StyledButton>
+      <StyledButton href="/home">Try Now</StyledButton>
     </MainHeader>
   );
 

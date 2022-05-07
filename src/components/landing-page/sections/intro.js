@@ -70,10 +70,34 @@ const fill = keyframes`
 }
 `;
 
+// const StyledButton = styled.a`
+//   height: 7.5vh;
+//   width: 15vw;
+//   margin: 0;
+//   background-color: transparent;
+//   border-radius: 10px;
+//   border: 2px solid rgb(9, 200, 195);
+//   color: rgb(9, 200, 195);
+//   &:hover {
+//     animation: ${fill} 1s linear;
+//     background-color: rgb(9, 200, 195);
+//     color: #fefefe;
+//   }
+// `;
+
 const StyledButton = styled(Button)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: initial;
   height: 7.5vh;
   width: 15vw;
-  margin: 2vw 0 0 calc(7.5vw - 30vw);
   font-weight: 600;
   background-color: transparent;
   border-radius: 10px;
@@ -122,7 +146,7 @@ function Intro() {
             real-time, control and grow your business while our software
             supplements your work.
           </Desc>
-          <StyledButton>Start Now</StyledButton>
+          <StyledButton href="/home">Start Now</StyledButton>
           <Ul>
             <Li>
               <Icon src={check} /> Free trial
