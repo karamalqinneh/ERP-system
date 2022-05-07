@@ -6,7 +6,7 @@ import instagram from "../../../assets/social-media-icons/IG.svg";
 
 const Section = styled.section`
   width: 100vw;
-  height: 80vh;
+  height: 50vh;
   background-color: rgb(9, 200, 195);
   display: flex;
   flex-direction: column;
