@@ -6,13 +6,14 @@ import CRM from "./components/CRM/CRM";
 import SCM from "./components/SCM/SCM";
 import Sales from "./components/sales/sales";
 import LoggedinHeader from "./UI/headers/loggedinHeader";
+import LandingPage from "./components/landing-page/landingPageMain";
 
 function App() {
   return (
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<LandingPage />} />
           <Route path="/home/*" element={<LoggedinHeader />} />
           <Route path="/scm/*" element={<SCM />} />
           <Route path="/hr/*" element={<HR />} />
