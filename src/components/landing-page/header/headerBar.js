@@ -21,7 +21,7 @@ const Header = styled.header`
   position: sticky;
   top: 0;
   z-index: 999;
-  box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.2);
+  box-shadow: 10px 5px 7px rgba(0, 0, 0, 0.2);
 `;
 
 const Title = styled.h1`
@@ -107,7 +107,7 @@ function HeaderBar() {
         <Link>Features</Link>
         <Link>Contact Us</Link>
       </Nav>
-      <StyledButton href="/home">Try Now</StyledButton>
+      <StyledButton href="/crm">Try Now</StyledButton>
     </Header>
   ) : (
     <MainHeader>
@@ -117,7 +117,7 @@ function HeaderBar() {
         <Link>Features</Link>
         <Link>Contact Us</Link>
       </Nav>
-      <StyledButton href="/home">Try Now</StyledButton>
+      <StyledButton href="/crm">Try Now</StyledButton>
     </MainHeader>
   );
 
