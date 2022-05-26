@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Form, Button } from "react-bootstrap";
-import { useRef, useState, useEffect } from "react";
+import { useRef } from "react";
 
 const Section = styled.section`
   display: flex;
@@ -58,9 +58,10 @@ function AddCustomerForm(props) {
     e.preventDefault();
     body = {
       name: customerNameRef.current.value,
-      id: classRef.current.value,
+      class: classRef.current.value,
       phone: phoneRef.current.value,
       email: emailRef.current.value,
+      // accountManager: get the useremail ,
     };
     console.log(body);
     customerNameRef.current.value = "";

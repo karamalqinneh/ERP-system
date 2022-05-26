@@ -86,6 +86,7 @@ function LeaveRequestMain(props) {
       start: startTimeRef.current.value,
       end: endTimeRef.current.value,
       comments: commentsRef.current.value,
+      // send employee id
     });
     dateRef.current.value = "";
     startTimeRef.current.value = "";

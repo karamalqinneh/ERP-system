@@ -24,6 +24,7 @@ const DataVisual = styled.div`
 function SupplierModal(props) {
   const [showProducts, setShowProducs] = useState(false);
   let buttonText = showProducts ? "Hide Products" : "Show Products";
+  console.log(props.info, "FROM MODAL");
   let body = showProducts ? (
     <StockTable items={props.info.products} />
   ) : (
