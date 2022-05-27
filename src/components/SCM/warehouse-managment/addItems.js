@@ -1,6 +1,9 @@
+import { useEffect, useRef, useState } from "react";
+
 import styled from "styled-components";
 import { Form, Button } from "react-bootstrap";
-import { useRef, useState } from "react";
+import axios from "axios";
+
 import ItemAdded from "./itemAdded";
 
 const Header = styled.h1`
@@ -48,6 +51,28 @@ const StyledButton = styled(Button)`
 
 function AddItems() {
   let [showModal, setShowModal] = useState(false);
+  let [options, setOptions] = useState([]);
+  let [suppliers, setSuppliers] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      let response = await axios.get("http://localhost:3001/get-products");
+      let data = response.data.map((ele) => {
+        return <option value={ele.id}>{ele.groupName}</option>;
+      });
+      setOptions(data);
+    };
+    fetchData();
+  }, []);
+  useEffect(() => {
+    const fetchData = async () => {
+      let response = await axios.get("http://localhost:3001/get-suppliers");
+      let data = response.data.map((ele) => {
+        return <option value={ele.id}>{ele.name}</option>;
+      });
+      setSuppliers(data);
+    };
+    fetchData();
+  }, []);
   let itemGroupRef = useRef();
   let productNameRef = useRef();
   let modelNameRef = useRef();
@@ -57,7 +82,7 @@ function AddItems() {
   let unitPriceRef = useRef();
   let body;
 
-  const newItemSubmitHandler = (e) => {
+  const newItemSubmitHandler = async (e) => {
     e.preventDefault();
     body = {
       itemGroup: itemGroupRef.current.value,
@@ -68,8 +93,17 @@ function AddItems() {
       dimensions: dimensionsRef.current.value,
       unitPrice: unitPriceRef.current.value,
     };
-    console.log(body);
-    setShowModal(true);
+    let request = await axios.post("http://localhost:3001/item-add", body);
+    if (request.status == 201) {
+      setShowModal(true);
+      itemGroupRef.current.value = "";
+      productNameRef.current.value = "";
+      modelNameRef.current.value = "";
+      supplierNameRef.current.value = "";
+      quantityRef.current.value = "";
+      dimensionsRef.current.value = "";
+      unitPriceRef.current.value = "";
+    }
     setTimeout(() => {
       setShowModal(false);
     }, 5000);
@@ -83,12 +117,23 @@ function AddItems() {
       >
         <div style={{ backgroundColor: "#fefefe" }}>
           <InputGroup>
-            <Label>Item Type:</Label>
+            <Label>Product Name:</Label>
             <Input
-              ref={itemGroupRef}
+              ref={productNameRef}
               type="text"
               placeholder="Enter Item Type"
             />
+          </InputGroup>
+          <InputGroup>
+            <Label>Item Group:</Label>
+            <Form.Select
+              style={{ width: "20vw", height: "3rem" }}
+              ref={itemGroupRef}
+              placeholder="Class"
+            >
+              <option>Product Group</option>
+              {options}
+            </Form.Select>
           </InputGroup>
           <InputGroup>
             <Label>Model Name:</Label>
@@ -100,11 +145,14 @@ function AddItems() {
           </InputGroup>
           <InputGroup>
             <Label>Supplier Name:</Label>
-            <Input
+            <Form.Select
+              style={{ width: "20vw", height: "3rem" }}
               ref={supplierNameRef}
-              type="text"
-              placeholder="Enter Supplier Name"
-            />
+              placeholder="Class"
+            >
+              <option>Suppliers</option>
+              {suppliers}
+            </Form.Select>
           </InputGroup>
         </div>
         <div style={{ marginLeft: "2rem", backgroundColor: "#fefefe" }}>
