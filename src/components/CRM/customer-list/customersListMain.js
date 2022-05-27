@@ -1,8 +1,11 @@
+import { useState, useEffect, useRef } from "react";
+
 import styled from "styled-components";
+import { Form } from "react-bootstrap";
+import axios from "axios";
+
 import Button from "../../../UI/button";
 import Card from "../../../UI/card";
-import { Form } from "react-bootstrap";
-import { useState, useEffect, useRef } from "react";
 import CustomerDetailsModal from "./customerDetailsModal";
 
 const Section = styled(Card)`
@@ -55,40 +58,16 @@ function CustomersList(props) {
   let classFilter = useRef();
   let managerFilter = useRef();
   const [modalShow, setModalShow] = useState(false);
-  // send a request to get the customers list
-  let customersList = [
-    {
-      id: 1,
-      customerName: "John Doe",
-      customerClass: "VIP",
-      accountManager: "Karam Al-Qinneh",
-      email: "johndoe@gmail.com",
-      phone: "962790499988",
-      createdBy: "Karam Al-Qinneh @ 05-12-2016 12:34:30 PM",
-      modifiedBy: "Karam Al-Qinneh @ 05-12-2018 12:34:30 PM",
-    },
-    {
-      id: 2,
-      customerName: "John Doe 2",
-      customerClass: "Bronze",
-      accountManager: "Muhaaned Al-Mughrabi",
-      email: "johndoe@gmail.com",
-      phone: "962790499988",
-      createdBy: "Karam Al-Qinneh @ 05-12-2016 12:34:30 PM",
-      modifiedBy: "Karam Al-Qinneh @ 05-12-2018 12:34:30 PM",
-    },
-    {
-      id: 3,
-      customerName: "John Doe 3",
-      customerClass: "Silver",
-      accountManager: "Karam Al-Qinneh",
-      email: "johndoe@gmail.com",
-      phone: "962790499988",
-      createdBy: "Karam Al-Qinneh @ 05-12-2016 12:34:30 PM",
-      modifiedBy: "Karam Al-Qinneh @ 05-12-2018 12:34:30 PM",
-    },
-  ];
-  let [filteredCustomers, setFilteredCustomers] = useState(customersList);
+  const [customersList, setCustomersList] = useState([]);
+  let [filteredCustomers, setFilteredCustomers] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      let response = await axios.get("http://localhost:3001/get-customers");
+      setFilteredCustomers(response.data);
+    };
+    fetchData();
+  }, []);
+
   const classChangeHandler = (e) => {
     setFilteredCustomers(
       customersList.filter((ele) => {
@@ -146,7 +125,7 @@ function CustomersList(props) {
           onChange={classChangeHandler}
         >
           <option>Filter By Classes</option>
-          <option value="VIP">VIP</option>
+          <option value="Gold">Gold</option>
           <option value="Silver">Silver</option>
           <option value="Bronze">Bronze</option>
         </Form.Select>

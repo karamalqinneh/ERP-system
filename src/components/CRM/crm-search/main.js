@@ -1,9 +1,12 @@
+import { useState, useEffect, useReducer } from "react";
+
 import styled from "styled-components";
+import axios from "axios";
+
 import CRMSearchModal from "./crmSearchModal";
 import CustomerInfo from "./customerInfo";
 import CustomerTicketsMain from "./customer-tickets/customerTicketsMain";
 import CustomerSalesMain from "./customer-sales/customerSalesMain";
-import { useState, useEffect, useReducer } from "react";
 
 const Section = styled.section`
   display: flex;
@@ -35,20 +38,20 @@ const Nav = styled.div`
 `;
 
 function MainSearch(props) {
-  const [searchResult, setSearchResult] = useState("No Data");
+  const [customerId, setCustomerId] = useState(1);
   useEffect(() => {
     setModalShow(true);
   }, []);
-  const initialState = <CustomerInfo customer={searchResult} />;
+  const initialState = <p>Options</p>;
 
   const reducer = (state, action) => {
     switch (action.type) {
       case "INFO":
-        return <CustomerInfo customer={searchResult} />;
+        return <CustomerInfo customer={customerId} />;
       case "TICKETS":
-        return <CustomerTicketsMain />;
+        return <CustomerTicketsMain customer={customerId} />;
       case "SALES":
-        return <CustomerSalesMain />;
+        return <CustomerSalesMain customer={customerId} />;
       default:
         return initialState;
     }
@@ -57,8 +60,9 @@ function MainSearch(props) {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const searchResultHandler = (data) => {
-    setSearchResult(data);
-    console.log(searchResult, "FROM MAIN");
+    console.log(data, "FROM MAIN");
+
+    setCustomerId(data);
   };
   return (
     <>

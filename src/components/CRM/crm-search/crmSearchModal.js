@@ -35,7 +35,7 @@ function CRMSearchModal(props) {
             </Form.Label>
             <Form.Control
               ref={searchRef}
-              type="text"
+              type="number"
               placeholder="Customer ID"
               style={{ backgroundColor: "#fefefe" }}
             />

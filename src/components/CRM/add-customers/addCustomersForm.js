@@ -1,6 +1,8 @@
+import { useRef } from "react";
+
 import styled from "styled-components";
 import { Form, Button } from "react-bootstrap";
-import { useRef } from "react";
+import axios from "axios";
 
 const Section = styled.section`
   display: flex;
@@ -54,16 +56,17 @@ function AddCustomerForm(props) {
   let emailRef = useRef();
   let body;
 
-  const newCustomerHandler = (e) => {
+  const newCustomerHandler = async (e) => {
     e.preventDefault();
     body = {
       name: customerNameRef.current.value,
       class: classRef.current.value,
       phone: phoneRef.current.value,
       email: emailRef.current.value,
-      // accountManager: get the useremail ,
+      accountManager: "karamalqinneh@live.com", //get the useremail
     };
-    console.log(body);
+    let request = await axios.post("http://localhost:3001/add-customer", body);
+    console.log(request);
     customerNameRef.current.value = "";
     classRef.current.value = "";
     phoneRef.current.value = "";

@@ -21,7 +21,6 @@ const DataVisual = styled.div`
 `;
 
 function CustomerDetailsModal(props) {
-  console.log(props.customer);
   return (
     <Modal
       {...props}

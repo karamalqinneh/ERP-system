@@ -7,12 +7,12 @@ const Td = styled.td`
   background-color: #fefefa;
   text-align: center;
   padding: 0.4rem;
+  width: 10vw;
 `;
 
 const Table = styled.table`
   border-collapse: collapse;
   background-color: #fefefa;
-  width: 80%;
   border-radius: 10px;
   margin-top: 1rem;
 `;

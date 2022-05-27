@@ -4,35 +4,12 @@ import { useEffect } from "react";
 
 function SearchResults(props) {
   // props.formInput to get the data
-  let customerTickets = [
-    {
-      id: "1",
-      resolution: "Sales",
-      date: "04-05-2022",
-      details: "Pending Shipment",
-      updates: {
-        "05-05-2022-09:23": "Test Message",
-        "05-05-2022-13:23": "Test Message",
-      },
-      status: "Open",
-    },
-    {
-      id: "2",
-      resolution: "Marketing",
-      date: "04-05-2022",
-      details: "Campaign didn't meet targets",
-      updates: {
-        "05-05-2022-09:23": "Test Message",
-        "05-05-2022-13:23": "Test Message",
-      },
-      status: "Resolved",
-    },
-  ];
+  let customerTickets = props.searchResults ? props.searchResults : [];
 
   return (
     <Modal
       {...props}
-      size="md"
+      size="lg"
       aria-labelledby="contained-modal-title-vcenter"
       style={{ background: "transparent", height: "auto", marginTop: "8%" }}
     >
@@ -49,10 +26,13 @@ function SearchResults(props) {
           backgroundColor: "#fefefe",
           height: "40vh",
           overflowY: "auto",
-          marginLeft: "7.5%",
+          display: "flex",
+          justifyContent: "center",
         }}
       >
-        <TicketsTable tickets={customerTickets} customerName="John Doe " />
+        {props.searchResults && (
+          <TicketsTable tickets={customerTickets} customerName="John Doe " />
+        )}
       </Modal.Body>
       <Modal.Footer style={{ backgroundColor: "#fefefe" }}>
         <Button
