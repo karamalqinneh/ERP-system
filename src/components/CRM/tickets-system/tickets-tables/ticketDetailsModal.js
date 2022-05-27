@@ -2,6 +2,7 @@ import { Modal, Button, Form } from "react-bootstrap";
 import { useState, useRef } from "react";
 
 function TicketDetailsModal(props) {
+  console.log(props.ticketData, "############");
   let commentRef = useRef();
   let [showContact, setShowContact] = useState(false);
   let [showComments, setShowComments] = useState(false);
@@ -34,10 +35,12 @@ function TicketDetailsModal(props) {
     </>
   );
   let comments = [];
-  for (let property in props.ticketData.updates) {
+  let updates = props.ticketData.updates;
+
+  for (let property in updates) {
     comments.push(
       <p style={{ backgroundColor: "#fefefe" }}>
-        {`${property}: ${props.ticketData.updates[property]} `}
+        {`${property}: ${updates[property]} `}
       </p>
     );
   }

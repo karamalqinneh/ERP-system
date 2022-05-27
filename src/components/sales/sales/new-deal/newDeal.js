@@ -1,6 +1,9 @@
-import styled from "styled-components";
-import { Form, Button } from "react-bootstrap";
 import { useRef, useState } from "react";
+
+import styled from "styled-components";
+import axios from "axios";
+import { Form, Button } from "react-bootstrap";
+
 import DealAdded from "./dealAdded";
 
 const Header = styled.h1`
@@ -69,7 +72,7 @@ function NewDeal() {
       ? setShowVatValue(true)
       : setShowVatValue(false);
   };
-  const newDealSubmitHandler = (e) => {
+  const newDealSubmitHandler = async (e) => {
     e.preventDefault();
     console.log(productGroupRef.current.value);
     body = {
@@ -86,7 +89,8 @@ function NewDeal() {
       orderDate: orderDateRef.current.value,
       fullfillmentDate: fullfillmentDateRef.current.value,
     };
-    console.log(body);
+    // let request = await axios.post("http://localhost:3001/add-customer", body);
+    // console.log(request);
     setShowModal(true);
     setTimeout(() => {
       setShowModal(false);

@@ -1,33 +1,23 @@
+import { useEffect, useState } from "react";
+
+import axios from "axios";
+
 import TicketsTable from "../../tickets-system/tickets-tables/ticketsTable";
-import { useEffect } from "react";
 
 function CustomerTicketsMain(props) {
-  let customerTickets = [
-    {
-      id: "1",
-      resolution: "Sales",
-      date: "04-05-2022",
-      details: "Pending Shipment",
-      updates: {
-        "05-05-2022-09:23": "Test Message",
-        "05-05-2022-13:23": "Test Message",
-      },
-      status: "Open",
-    },
-    {
-      id: "2",
-      resolution: "Marketing",
-      date: "04-05-2022",
-      details: "Campaign didn't meet targets",
-      updates: {
-        "05-05-2022-09:23": "Test Message",
-        "05-05-2022-13:23": "Test Message",
-      },
-      status: "Resolved",
-    },
-  ];
+  const [tickets, setTickets] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      let response = await axios.get(
+        `http://localhost:3001/tickets/customer/${props.customer}`
+      );
 
-  return <TicketsTable tickets={customerTickets} customerName="John Doe " />;
+      setTickets(response.data);
+    };
+    fetchData();
+  }, []);
+
+  return <TicketsTable tickets={tickets} />;
 }
 
 export default CustomerTicketsMain;

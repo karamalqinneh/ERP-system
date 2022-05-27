@@ -1,7 +1,10 @@
-import styled from "styled-components";
-import SearchResults from "./searchResults";
-import { Form, Button } from "react-bootstrap";
 import { useRef, useState, useEffect } from "react";
+
+import styled from "styled-components";
+import { Form, Button } from "react-bootstrap";
+import axios from "axios";
+
+import SearchResults from "./searchResults";
 
 const Header = styled.h1`
   background-color: #fefefe;
@@ -40,13 +43,14 @@ const StyledButton = styled(Button)`
 
 function SearchForm() {
   let [showModal, setShowModal] = useState(false);
+  let [searchResults, setSearchResults] = useState([]);
   let customerNameRef = useRef();
   let tickedIDRef = useRef();
   let dateRef = useRef();
   let resolutionRef = useRef();
   let body;
 
-  const ticketSearchHandler = (e) => {
+  const ticketSearchHandler = async (e) => {
     e.preventDefault();
     body = {
       name: customerNameRef.current.value,
@@ -54,6 +58,11 @@ function SearchForm() {
       date: dateRef.current.value,
       reso: resolutionRef.current.value,
     };
+    let response = await axios.post(
+      "http://localhost:3001/tickets/search",
+      body
+    );
+    setSearchResults(response.data);
     setShowModal(true);
   };
   return (
@@ -91,7 +100,11 @@ function SearchForm() {
           Submit
         </StyledButton>
       </Form>
-      <SearchResults show={showModal} onHide={() => setShowModal(false)} />
+      <SearchResults
+        searchResults={searchResults}
+        show={showModal}
+        onHide={() => setShowModal(false)}
+      />
     </>
   );
 }

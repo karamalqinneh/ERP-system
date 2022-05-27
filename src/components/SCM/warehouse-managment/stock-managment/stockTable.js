@@ -35,8 +35,11 @@ const StyledButton = styled(Button)`
 `;
 
 function StockTable(props) {
+  const [filterdItems, setFilteredItems] = useState([]);
+  useEffect(() => {
+    setFilteredItems(props.items);
+  }, [props.items]);
   const [modalShow, setModalShow] = useState(false);
-  const [filterdItems, setFilteredItems] = useState(props.items);
   let groupFilter = useRef();
   const groupChangeHandler = (e) => {
     setFilteredItems(
@@ -50,7 +53,9 @@ function StockTable(props) {
     );
   };
   let productGroup = [
-    ...new Set(props.items.map((ele) => ele.productGroup)),
+    ...new Set(
+      props.items.length > 0 ? props.items.map((ele) => ele.productGroup) : []
+    ),
   ].map((ele, index) => <option key={index} value={ele}>{`${ele}`}</option>);
   let rows = filterdItems.map((ele) => {
     return (

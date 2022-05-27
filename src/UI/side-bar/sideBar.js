@@ -56,7 +56,6 @@ const Footer = styled.footer`
 function SideBar(props) {
   const navRef = useRef();
   const activeHandler = (e) => {
-    console.log(navRef.current.children);
     const children = [].slice.call(navRef.current.children);
     children.forEach((ele) => ele.classList.remove("active"));
     e.target.classList.add("active");

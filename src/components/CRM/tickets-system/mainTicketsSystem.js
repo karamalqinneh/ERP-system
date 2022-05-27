@@ -1,8 +1,9 @@
+import { useState, useEffect, useReducer } from "react";
+
 import styled from "styled-components";
+
 import SearchForm from "./tickets-search/searchForm";
 import OpenTickets from "./open-tickets/openTickets";
-
-import { useState, useEffect, useReducer } from "react";
 
 const Section = styled.section`
   display: flex;

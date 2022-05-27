@@ -1,6 +1,9 @@
+import { useEffect, useState } from "react";
+
 import styled from "styled-components";
+import axios from "axios";
+
 import Card from "../../../UI/card";
-import VacationBalance from "../vaction-request/vacationBalance";
 import RequestsHistory from "./requestsHistory";
 import PendingRequest from "./pendingRequests";
 
@@ -38,6 +41,12 @@ const Data = styled.h1`
 `;
 
 function HRMain() {
+  const [requestsHistory2, setRequestsHistory] = useState([]);
+  useEffect(() => {
+    const fetchData = () => {
+      let response = axios.get("");
+    };
+  }, []);
   let requestsHistory = [
     {
       id: 1,

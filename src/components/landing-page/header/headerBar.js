@@ -91,7 +91,6 @@ const StyledButton = styled.a`
 function HeaderBar() {
   const [showNavbar, setShowNavbar] = useState(false);
   const handleNav = (e) => {
-    console.log(window.scrollY);
     if (window.scrollY > 50) {
       setShowNavbar(true);
     } else {
