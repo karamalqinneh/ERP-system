@@ -1,8 +1,11 @@
+import { useRef, useState, useEffect } from "react";
+
 import styled from "styled-components";
+import axios from "axios";
+
 import Card from "../../../UI/card";
 import RequestsTable from "./requestsTable";
 import Button from "../../../UI/button";
-import { useRef, useState } from "react";
 
 const Container = styled(Card)`
   display: flex;
@@ -39,54 +42,23 @@ const Keys = styled(Button)`
 `;
 
 function ManagerViewMain(props) {
-  let leaveRequests = [
-    {
-      id: "1",
-      employee: "Test 1",
-      date: "04-05-2022",
-      startTime: "09:00AM",
-      endTime: "10:00AM",
-      comments: "TEST.....................",
-      employeeBalance: 12.4,
-    },
-    {
-      id: "2",
-      employee: "Test 2",
-      date: "04-05-2022",
-      startTime: "09:00AM",
-      endTime: "10:00AM",
-      comments: "TEST.....................",
-      employeeBalance: 12.4,
-    },
-    {
-      id: "2",
-      employee: "Test 2",
-      date: "04-05-2022",
-      startTime: "09:00AM",
-      endTime: "10:00AM",
-      comments: "TEST.....................",
-      employeeBalance: 12.4,
-    },
-  ];
+  const [leaveRequests, setLeaveRequests] = useState([]);
+  const [vacationRequests, setVacationRequets] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      let managerId = 1;
+      let vacationsResponse = await axios.get(
+        `http://localhost:3001/manager/${managerId}/vacation-requests`
+      );
+      let leavesResponse = await axios.get(
+        `http://localhost:3001/manager/${managerId}/leave-requests`
+      );
+      setLeaveRequests(leavesResponse.data);
+      setVacationRequets(vacationsResponse.data);
+    };
+    fetchData();
+  }, []);
 
-  let vacationRequests = [
-    {
-      id: "3",
-      employee: "Test 3",
-      startDate: "04-05-2022",
-      endDate: "07-05-2022",
-      comments: "TEST.....................",
-      employeeBalance: 12.4,
-    },
-    {
-      id: "4",
-      employee: "Test 4",
-      startDate: "04-05-2022",
-      endDate: "07-05-2022",
-      comments: "TEST.....................",
-      employeeBalance: 12.4,
-    },
-  ];
   let [renderedData, setRenderedData] = useState(leaveRequests);
 
   const requestDivRef = useRef();

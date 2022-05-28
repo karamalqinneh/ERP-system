@@ -32,7 +32,9 @@ const ModifiedSelect = styled.select`
 
 function OptionsDropDown(props) {
   let customInput = props.optionsData.map((ele) => (
-    <ModifiedOption key={ele}>{ele}</ModifiedOption>
+    <ModifiedOption key={ele.value} value={ele.value}>
+      {ele.name}
+    </ModifiedOption>
   ));
   return <ModifiedSelect>{customInput}</ModifiedSelect>;
 }

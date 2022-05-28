@@ -1,4 +1,4 @@
-import { useState, useEffect, useReducer } from "react";
+import { useState, useRef, useReducer } from "react";
 
 import styled from "styled-components";
 
@@ -32,9 +32,21 @@ const Nav = styled.div`
   font-weight: 500;
   font-size: 1.3rem;
   background-color: #fefefe;
+  &.active {
+    color: rgba(9, 200, 195, 1);
+  }
+  &:hover {
+    color: rgba(9, 200, 195, 1);
+  }
 `;
 
 function MainTicketsSystem(props) {
+  const navBarRef = useRef();
+  const classesHandler = (e) => {
+    const children = [].slice.call(navBarRef.current.children);
+    children.forEach((ele) => ele.classList.remove("active"));
+    e.target.classList.add("active");
+  };
   const initialState = <SearchForm />;
 
   const reducer = (state, action) => {
@@ -53,8 +65,17 @@ function MainTicketsSystem(props) {
   return (
     <>
       <Section>
-        <Navbar className={props.className}>
-          <Nav onClick={() => dispatch({ type: "SEARCH" })}>Search</Nav>
+        <Navbar
+          className={props.className}
+          ref={navBarRef}
+          onClick={classesHandler}
+        >
+          <Nav
+            onClick={() => dispatch({ type: "SEARCH" })}
+            className={"active"}
+          >
+            Search
+          </Nav>
           <Nav onClick={() => dispatch({ type: "OPEN" })}>Open Tickets</Nav>
           <Nav onClick={() => dispatch({ type: "REPORTS" })}>Reports</Nav>
         </Navbar>

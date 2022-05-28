@@ -1,9 +1,12 @@
+import { useState, useEffect } from "react";
+
 import styled from "styled-components";
+import axios from "axios";
+
 import Card from "../../../UI/card";
 import SalaryTable from "./table";
 import OptionsDropDown from "../../../UI/options";
 import Button from "../../../UI/button";
-import { useRef } from "react";
 
 const MainContainer = styled.div`
   display: flex;
@@ -38,28 +41,48 @@ const StyledButton = styled(Button)`
 `;
 
 function SalarySlipMain(props) {
+  const [salaryData, setSalaryData] = useState({});
   const months = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
+    { name: "January", value: 1 },
+    { name: "February", value: 2 },
+    { name: "March", value: 3 },
+    { name: "April", value: 4 },
+    { name: "May", value: 5 },
+    { name: "June", value: 6 },
+    { name: "July", value: 7 },
+    { name: "August", value: 8 },
+    { name: "September", value: 9 },
+    { name: "October", value: 10 },
+    { name: "November", value: 11 },
+    { name: "December", value: 12 },
   ];
-  const currentMonthHandler = (e) => {
-    console.log(e.target.value);
+  const currentMonthHandler = async (e) => {
+    const month = e.target.value;
+    const user = 1;
+    let salaryRequest = await axios.get(
+      `http://localhost:3001/employee/${user}/salary-slip/${month}`
+    );
+    if (new Date() > new Date("2022", month, "01")) {
+      setSalaryData({ ...salaryRequest.data, month: months[month - 1].name });
+    } else {
+      setSalaryData({
+        basicSalary: 0,
+        netPay: 0,
+        otHours: 0,
+        otPayment: 0,
+        otherDeductions: 0,
+        socialSecurity: 0,
+        totalBonuses: 0,
+        totalDeductions: 0,
+        totalPayment: 0,
+      });
+    }
   };
 
   return (
     <MainContainer>
       <Container>
-        <SalaryTable />
+        <SalaryTable data={salaryData} />
       </Container>
       <Container2>
         <form onChange={currentMonthHandler}>

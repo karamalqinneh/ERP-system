@@ -1,7 +1,9 @@
+import { useReducer, useRef } from "react";
+
 import styled from "styled-components";
+
 import AddItems from "./addItems";
 import Stock from "./stock-managment/stock";
-import { useState, useEffect, useReducer, useRef } from "react";
 
 const Section = styled.section`
   display: flex;
@@ -33,6 +35,8 @@ const Nav = styled.div`
   &.active {
     color: rgba(9, 200, 195, 1);
   }
+  &:hover {
+    color: rgba(9, 200, 195, 1);
 `;
 
 function MainWarehouse(props) {
@@ -59,6 +63,7 @@ function MainWarehouse(props) {
     <Section>
       <Navbar className={props.className} ref={navRef}>
         <Nav
+          className={"active"}
           onClick={(e) => {
             activeHandler(e);
             dispatch({ type: "ADD" });
