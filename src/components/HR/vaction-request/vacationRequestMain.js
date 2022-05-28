@@ -1,12 +1,15 @@
+import { useRef } from "react";
+
 import styled from "styled-components";
+import axios from "axios";
+
 import Card from "../../../UI/card";
 import VacationBalance from "./vacationBalance";
-import { useRef } from "react";
 
 const Container = styled(Card)`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   width: 60vw;
   height: 70vh;
@@ -20,7 +23,6 @@ const Form = styled.form`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: rgb(9, 200, 195);
   background-color: #fefefa;
 `;
 
@@ -63,7 +65,6 @@ const Input = styled.input`
   border-radius: 5px;
   font-size: 1.25rem;
   text-align: center;
-  color: rgb(9, 200, 195);
   background-color: #fefefa;
   margin-top: 0.2rem;
 `;
@@ -78,14 +79,19 @@ function VacationRequestMain(props) {
   let startDateRef = useRef();
   let endDateRef = useRef();
   let commentsRef = useRef();
-  const leaveRequestHandler = (e) => {
+  const leaveRequestHandler = async (e) => {
     e.preventDefault();
-    console.log({
+    let body = {
       start: startDateRef.current.value,
       end: endDateRef.current.value,
       comments: commentsRef.current.value,
-      // send employee
-    });
+      user: 1,
+    };
+    let request = await axios.post(
+      "http://localhost:3001/new-vacation-request",
+      body
+    );
+    console.log(request);
     startDateRef.current.value = "";
     endDateRef.current.value = "";
     commentsRef.current.value = "";

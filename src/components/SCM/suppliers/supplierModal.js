@@ -1,7 +1,10 @@
+import { useState, useEffect } from "react";
+
 import styled from "styled-components";
-import StockTable from "../warehouse-managment/stock-managment/stockTable";
 import { Modal, Button, Form } from "react-bootstrap";
-import { useState } from "react";
+import axios from "axios";
+
+import StockTable from "../warehouse-managment/stock-managment/stockTable";
 
 const Data = styled.h1`
   background-color: #fefefe;
@@ -23,10 +26,20 @@ const DataVisual = styled.div`
 
 function SupplierModal(props) {
   const [showProducts, setShowProducs] = useState(false);
+  const [info, setInfo] = useState({});
+  useEffect(() => {
+    const fetchData = async () => {
+      let response = await axios.get(
+        `http://localhost:3001/supplier/${props.info.id}/get-products`
+      );
+      setInfo(response.data);
+    };
+    fetchData();
+  }, []);
+
   let buttonText = showProducts ? "Hide Products" : "Show Products";
-  console.log(props.info, "FROM MODAL");
   let body = showProducts ? (
-    <StockTable items={props.info.products} />
+    <StockTable items={info} />
   ) : (
     <>
       <DataVisual>

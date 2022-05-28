@@ -8,6 +8,7 @@ const Div = styled.div`
   text-align: center;
   font-weight: 600;
   background-color: #fefefa;
+  margin-bottom: 2vh;
 `;
 
 function VacationBalance(props) {

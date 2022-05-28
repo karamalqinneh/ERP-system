@@ -1,4 +1,7 @@
+import { useEffect, useState } from "react";
+
 import styled from "styled-components";
+
 import logo from "../../../assets/logo.png";
 
 const Td = styled.td`
@@ -19,23 +22,18 @@ const Image = styled.img`
 `;
 
 function SalaryTable(props) {
-  let data = {
-    month: "May",
-    year: "2022",
-    employee: "Karam Al-Qinneh",
-    paidDays: 30,
-    gender: "Male",
-    lopDays: 0,
-    basicSalary: 600,
-    otHours: 23,
-    otRate: 1.5,
-    otPayment: 300,
-    totalPayment: 900,
-    socialSecurity: 30,
-    otherDeductions: 100,
-    totalDeductions: 130,
-    netPay: 770,
-  };
+  const [data, setData] = useState({});
+  useEffect(() => {
+    const year = new Date().getFullYear();
+    setData({
+      ...props.data,
+      year,
+      paidDays: 30,
+      lopDays: 0,
+      otRate: 1.5,
+      gender: "Male",
+    });
+  }, [props.data]);
   return (
     <Table>
       <tbody>

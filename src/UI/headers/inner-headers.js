@@ -1,5 +1,7 @@
+import { useEffect, useRef } from "react";
+
 import styled from "styled-components";
-import { useParams } from "react-router-dom";
+
 const Navbar = styled.nav`
   color: #09c8c3;
   padding: 1rem;
@@ -32,12 +34,30 @@ const Nav = styled.a`
   &:hover {
     border-bottom: 5px solid rgba(9, 200, 195, 1);
     color: rgba(9, 200, 195, 1);
+    font-weight: 600;
+  }
+  &.active {
+    border-bottom: 5px solid rgba(9, 200, 195, 1);
+    color: rgba(9, 200, 195, 1);
+    font-weight: 600;
   }
 `;
 
 function InnerHeader(props) {
+  const navBarRef = useRef();
+  console.log(window.location.href.split("/")[3]);
+  useEffect(() => {
+    const children = [].slice.call(navBarRef.current.children);
+    children.forEach((ele) => {
+      ele.classList.remove("active");
+      if (ele.innerHTML.toLowerCase() == window.location.href.split("/")[3]) {
+        ele.classList.add("active");
+      }
+    });
+  }, []);
+
   return (
-    <Navbar className={props.className}>
+    <Navbar className={props.className} ref={navBarRef}>
       <Nav href="/home">Home</Nav>
       <Nav href="/scm">SCM</Nav>
       <Nav href="/hr">HR</Nav>

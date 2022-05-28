@@ -1,7 +1,10 @@
+import { useState } from "react";
+
 import styled from "styled-components";
+import axios from "axios";
+
 import logo from "../../../assets/logo.png";
 import Button from "../../../UI/button";
-import { useState } from "react";
 import RequestDetailsModal from "./requestDetailModal";
 const Td = styled.td`
   border: 1px solid black;
@@ -33,12 +36,36 @@ const StyledButton = styled(Button)`
 
 function RequestsTable(props) {
   const [modalShow, setModalShow] = useState(false);
-
-  const acceptHandler = (req) => {
-    console.log("ACC", req.id);
+  let managerId = 1;
+  const acceptHandler = async (req) => {
+    if (req.type == "Vacation") {
+      let request = await axios.put(
+        `http://localhost:3001/manager/${managerId}/update-vacations`,
+        { action: "ACC", id: req.id }
+      );
+      console.log(request);
+    } else {
+      let request = await axios.put(
+        `http://localhost:3001/manager/${managerId}/update-leaves`,
+        { action: "ACC", id: req.id }
+      );
+      console.log(request);
+    }
   };
-  const declineHandler = (req) => {
-    console.log("DEC", req.id);
+  const declineHandler = async (req) => {
+    if (req.type == "Vacation") {
+      let request = await axios.put(
+        `http://localhost:3001/manager/${managerId}/update-vacations`,
+        { action: "DEC", id: req.id }
+      );
+      console.log(request);
+    } else {
+      let request = await axios.put(
+        `http://localhost:3001/manager/${managerId}/update-leaves`,
+        { action: "DEC", id: req.id }
+      );
+      console.log(request);
+    }
   };
   let rows = props.requests.map((ele) => {
     return (

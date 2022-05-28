@@ -68,13 +68,16 @@ function ItemModal(props) {
           <Data>Quantity In Stock:</Data>
           <Data>&nbsp;&nbsp;&nbsp;&nbsp;{`${props.info.quantity}`}</Data>
         </DataVisual>
-        <DataVisual>
-          <Data>Dimensions:</Data>
-          <Data>
-            &nbsp;&nbsp;&nbsp;&nbsp;
-            {`Length: ${props.info.dimensions.length} Height: ${props.info.dimensions.height}`}
-          </Data>
-        </DataVisual>
+        {props.info.dimensions && (
+          <DataVisual>
+            <Data>Dimensions:</Data>
+            <Data>
+              &nbsp;&nbsp;&nbsp;&nbsp;
+              {`Length: ${props.info.dimensions.length} Height: ${props.info.dimensions.height}`}
+            </Data>
+          </DataVisual>
+        )}
+
         <DataVisual>
           <Data>Unit Price:</Data>
           <Data>&nbsp;&nbsp;&nbsp;&nbsp;{`${props.info.unitPrice}`}</Data>
