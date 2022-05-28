@@ -61,16 +61,32 @@ function SideBar(props) {
     e.target.classList.add("active");
   };
 
-  let tabs = props.tabsData.map((ele) => (
-    <SubTabs
-      key={ele.tabName}
-      onClick={() => {
-        ele.actionName();
-      }}
-    >
-      {ele.tabName}
-    </SubTabs>
-  ));
+  let tabs = props.tabsData.map((ele, idx) => {
+    if (idx == 0) {
+      return (
+        <SubTabs
+          className={"active"}
+          key={ele.tabName}
+          onClick={() => {
+            ele.actionName();
+          }}
+        >
+          {ele.tabName}
+        </SubTabs>
+      );
+    } else {
+      return (
+        <SubTabs
+          key={ele.tabName}
+          onClick={() => {
+            ele.actionName();
+          }}
+        >
+          {ele.tabName}
+        </SubTabs>
+      );
+    }
+  });
   return (
     <SideContainer className={props.className}>
       <TabName>{props.tabName}</TabName>

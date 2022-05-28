@@ -64,6 +64,7 @@ function CustomersList(props) {
     const fetchData = async () => {
       let response = await axios.get("http://localhost:3001/get-customers");
       setFilteredCustomers(response.data);
+      setCustomersList(response.data);
     };
     fetchData();
   }, []);
