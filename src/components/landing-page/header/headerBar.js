@@ -106,7 +106,7 @@ function HeaderBar() {
         <Link>Features</Link>
         <Link>Contact Us</Link>
       </Nav>
-      <StyledButton href="/crm">Try Now</StyledButton>
+      <StyledButton href="/home">Try Now</StyledButton>
     </Header>
   ) : (
     <MainHeader>
@@ -116,7 +116,7 @@ function HeaderBar() {
         <Link>Features</Link>
         <Link>Contact Us</Link>
       </Nav>
-      <StyledButton href="/crm">Try Now</StyledButton>
+      <StyledButton href="/home">Try Now</StyledButton>
     </MainHeader>
   );
 
