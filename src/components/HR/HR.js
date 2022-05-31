@@ -9,6 +9,7 @@ import data from "../../data";
 import SalarySlipMain from "./salary-slip/salarySlipMain";
 import ManagerViewMain from "./manager-view/managerViewMain";
 import HRMain from "./hr-main/hrMain";
+import Auth from "../context/auth/auth";
 
 const Section = styled.section`
   display: grid;
@@ -16,9 +17,9 @@ const Section = styled.section`
   grid-template-columns: 1fr 2vw;
   width: 80vw;
   height: 100vh;
-  position: fixed;
+  position: relative;
   left: 20vw;
-  overflow-y: auto;
+  overflow-y: scroll;
 `;
 
 const StyledInnerHeader = styled(InnerHeader)`
@@ -30,7 +31,6 @@ const Div = styled.div`
   height: 10vh;
   border-radius: 3px;
 `;
-// background-color: #fefefe;
 
 const initialState = (
   <Div>
@@ -80,7 +80,7 @@ function HR() {
         <SideBar tabsData={dataArray} tabName="HR"></SideBar>
         <Section>
           <StyledInnerHeader></StyledInnerHeader>
-          {state}
+          <Auth>{state}</Auth>
         </Section>
       </div>
     </>

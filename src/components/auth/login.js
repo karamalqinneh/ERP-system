@@ -1,18 +1,19 @@
+import { useContext, useState } from "react";
+
+import { When } from "react-if";
 import styled from "styled-components";
-import login from "../../assets/login.png";
+
+import Button from "../../UI/button";
+import image from "../../assets/login.png";
+import { LoginContext } from "../context/auth/login";
 
 const Form = styled.form`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 25vw;
-  padding: 2.5rem;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  border-radius: 25px;
   background: #fefefe;
 `;
-// box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.2);
 
 const Image = styled.img`
   height: 4rem;
@@ -21,8 +22,8 @@ const Image = styled.img`
 `;
 
 const Input = styled.input`
-  height: 2.5rem;
-  width: 100%;
+  width: 20vw;
+  height: 3rem;
   margin-top: 1rem;
   border: 1px solid #b3b3b3;
   border-radius: 5px;
@@ -38,18 +39,13 @@ const RemmemberMe = styled.div`
   background-color: #fefefe;
 `;
 
-const Button = styled.button`
-  height: 2.5rem;
-  width: 10vw;
-  margin-top: 1rem;
-  border: 1px solid #b3b3b3;
-  border-radius: 5px;
-  font-size: 1.25rem;
-  cursor: pointer;
-  text-transform: uppercase;
-  background-color: #09c8c3;
-  color: #fefefa;
-  box-shadow: 1px 3px 1px rgb(0 0 0, 0.2);
+const StyledButton = styled(Button)`
+  background-color: rgba(9, 200, 195, 0.8);
+  border-color: rgb(9, 200, 195);
+  width: 15vw;
+  &:hover {
+    background-color: rgb(9, 200, 195);
+  }
 `;
 
 const Link = styled.a`
@@ -60,12 +56,29 @@ const Link = styled.a`
 `;
 
 function Signin(props) {
+  const login = useContext(LoginContext);
+
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    login.login(username, password);
+  }
   return (
-    <Form className={props.className}>
-      <Image src={login} />
+    <Form className={props.className} onSubmit={handleSubmit}>
+      <Image src={image} />
       <h1 style={{ backgroundColor: "#fefefe" }}>Sign in</h1>
-      <Input type="email" placeholder="Email Address" />
-      <Input type="password" placeholder="Password" />
+      <Input
+        type="email"
+        placeholder="Email Address"
+        onChange={(e) => setUsername(e.target.value)}
+      />
+      <Input
+        type="password"
+        placeholder="Password"
+        onChange={(e) => setPassword(e.target.value)}
+      />
       <RemmemberMe>
         <input
           type="checkbox"
@@ -79,8 +92,11 @@ function Signin(props) {
           Remmember me
         </label>
       </RemmemberMe>
-      <Button>Sign in</Button>
+      <StyledButton>Sign in</StyledButton>
       <Link>Forgot Password?</Link>
+      <p style={{ backgroundColor: "#fefefe" }}>
+        If you don't have an account please contact your system adminstrator
+      </p>
     </Form>
   );
 }

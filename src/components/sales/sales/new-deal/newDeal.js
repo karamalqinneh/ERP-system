@@ -89,8 +89,7 @@ function NewDeal() {
       orderDate: orderDateRef.current.value,
       fullfillmentDate: fullfillmentDateRef.current.value,
     };
-    // let request = await axios.post("http://localhost:3001/add-customer", body);
-    // console.log(request);
+
     setShowModal(true);
     setTimeout(() => {
       setShowModal(false);

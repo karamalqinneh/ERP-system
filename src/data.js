@@ -98,6 +98,20 @@ let data = (dispatch) => {
         },
       },
     ],
+    Home: [
+      {
+        tabName: "Login",
+        actionName: () => {
+          dispatch({ type: "LOGIN" });
+        },
+      },
+      {
+        tabName: "Profile Settings",
+        actionName: () => {
+          dispatch({ type: "SETTINGS" });
+        },
+      },
+    ],
   };
 };
 

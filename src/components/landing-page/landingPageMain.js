@@ -9,7 +9,6 @@ const Body = styled.section`
   width: 100vw;
   background-color: #fefefe;
 `;
-// height: 300vh;
 
 function LandingPage() {
   return (

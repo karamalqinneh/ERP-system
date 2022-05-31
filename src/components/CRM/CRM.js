@@ -8,6 +8,7 @@ import MainSearch from "./crm-search/main";
 import MainTicketsSystem from "./tickets-system/mainTicketsSystem";
 import CustomersList from "./customer-list/customersListMain";
 import AddCustomerForm from "./add-customers/addCustomersForm";
+import Auth from "../context/auth/auth";
 
 const Section = styled.section`
   display: grid;
@@ -15,7 +16,7 @@ const Section = styled.section`
   grid-template-columns: 1fr 2vw;
   width: 80vw;
   height: 100vh;
-  position: fixed;
+  position: relative;
   left: 20vw;
   overflow-y: auto;
 `;
@@ -27,7 +28,6 @@ const Div = styled.div`
   grid-area: 3 / 1 / 4 / 2;
   margin-left: 4rem;
 `;
-// background-color: #fefefe;
 
 const initialState = (
   <Div>
@@ -77,7 +77,7 @@ function CRM() {
         <SideBar tabsData={dataArray} tabName="CRM"></SideBar>
         <Section>
           <StyledInnerHeader></StyledInnerHeader>
-          {state}
+          <Auth>{state}</Auth>
         </Section>
       </div>
     </>
