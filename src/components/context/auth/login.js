@@ -4,7 +4,7 @@ import superagent from "superagent";
 import jwt from "jwt-decode";
 import cookie from "react-cookies";
 
-const API = `http://localhost:3001`;
+const API = `https://erp-system-2022.herokuapp.com`;
 export const LoginContext = React.createContext();
 
 export default function LoginProvider(props) {

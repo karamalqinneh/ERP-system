@@ -9,7 +9,7 @@ function CustomerTicketsMain(props) {
   useEffect(() => {
     const fetchData = async () => {
       let response = await axios.get(
-        `http://localhost:3001/tickets/customer/${props.customer}`
+        `https://erp-system-2022.herokuapp.com/tickets/customer/${props.customer}`
       );
 
       setTickets(response.data);

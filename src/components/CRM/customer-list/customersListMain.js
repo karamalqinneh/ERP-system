@@ -94,7 +94,9 @@ function CustomersList(props) {
   let [data, setData] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
-      let response = await axios.get("http://localhost:3001/get-customers");
+      let response = await axios.get(
+        "https://erp-system-2022.herokuapp.com/get-customers"
+      );
       setFilteredCustomers(response.data);
       setCustomersList(response.data);
       setDataLength(response.data.length);

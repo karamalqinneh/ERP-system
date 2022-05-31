@@ -55,7 +55,9 @@ function AddItems() {
   let [suppliers, setSuppliers] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
-      let response = await axios.get("http://localhost:3001/get-products");
+      let response = await axios.get(
+        "https://erp-system-2022.herokuapp.com/get-products"
+      );
       let data = response.data.map((ele) => {
         return <option value={ele.id}>{ele.groupName}</option>;
       });
@@ -65,7 +67,9 @@ function AddItems() {
   }, []);
   useEffect(() => {
     const fetchData = async () => {
-      let response = await axios.get("http://localhost:3001/get-suppliers");
+      let response = await axios.get(
+        "https://erp-system-2022.herokuapp.com/get-suppliers"
+      );
       let data = response.data.map((ele) => {
         return <option value={ele.id}>{ele.name}</option>;
       });
@@ -93,7 +97,10 @@ function AddItems() {
       dimensions: dimensionsRef.current.value,
       unitPrice: unitPriceRef.current.value,
     };
-    let request = await axios.post("http://localhost:3001/item-add", body);
+    let request = await axios.post(
+      "https://erp-system-2022.herokuapp.com/item-add",
+      body
+    );
     if (request.status == 201) {
       setShowModal(true);
       itemGroupRef.current.value = "";

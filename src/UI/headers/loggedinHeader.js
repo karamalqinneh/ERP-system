@@ -112,7 +112,7 @@ const OptionsDiv = styled.div`
   position: fixed;
   z-index: 10;
   top: 10vh;
-  right: 4vw;
+  right: 2.5%;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);

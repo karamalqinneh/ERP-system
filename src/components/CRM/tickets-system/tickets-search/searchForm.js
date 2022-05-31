@@ -59,7 +59,7 @@ function SearchForm() {
       reso: resolutionRef.current.value,
     };
     let response = await axios.post(
-      "http://localhost:3001/tickets/search",
+      "https://erp-system-2022.herokuapp.com/tickets/search",
       body
     );
     setSearchResults(response.data);

@@ -24,7 +24,9 @@ function SuppliersMain(props) {
   let [suppliers, setSuppliers] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
-      let response = await axios.get("http://localhost:3001/get-suppliers");
+      let response = await axios.get(
+        "https://erp-system-2022.herokuapp.com/get-suppliers"
+      );
       setSuppliers(await response.data);
     };
     fetchData();

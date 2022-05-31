@@ -10,7 +10,7 @@ function CustomerSalesMain(props) {
     console.log(props.customer);
     const fetchData = async () => {
       let response = await axios.get(
-        `http://localhost:3001/sales/customer/${props.customer}`
+        `https://erp-system-2022.herokuapp.com/sales/customer/${props.customer}`
       );
       console.log(response.data);
       setSales(response.data);

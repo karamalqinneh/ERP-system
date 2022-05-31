@@ -15,7 +15,9 @@ function Stock() {
   let [stock, setStock] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
-      let response = await axios.get("http://localhost:3001/get-items");
+      let response = await axios.get(
+        "https://erp-system-2022.herokuapp.com/get-items"
+      );
       setStock(response.data);
     };
     fetchData();

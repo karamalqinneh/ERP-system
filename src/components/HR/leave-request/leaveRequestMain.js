@@ -90,7 +90,7 @@ function LeaveRequestMain(props) {
       user: 1,
     };
     let request = await axios.post(
-      "http://localhost:3001/new-leave-request",
+      "https://erp-system-2022.herokuapp.com/new-leave-request",
       body
     );
     console.log(request);

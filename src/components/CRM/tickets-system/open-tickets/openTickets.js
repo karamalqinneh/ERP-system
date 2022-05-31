@@ -9,7 +9,7 @@ function OpenTickets() {
   useEffect(() => {
     const fetchData = async () => {
       let response = await axios.get(
-        "http://localhost:3001/tickets/open-tickets"
+        "https://erp-system-2022.herokuapp.com/tickets/open-tickets"
       );
       let data = !response.data
         ? []

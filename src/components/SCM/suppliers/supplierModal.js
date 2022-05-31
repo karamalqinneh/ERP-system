@@ -30,7 +30,7 @@ function SupplierModal(props) {
   useEffect(() => {
     const fetchData = async () => {
       let response = await axios.get(
-        `http://localhost:3001/supplier/${props.info.id}/get-products`
+        `https://erp-system-2022.herokuapp.com/supplier/${props.info.id}/get-products`
       );
       setInfo(response.data);
     };

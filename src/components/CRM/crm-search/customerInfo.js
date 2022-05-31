@@ -27,7 +27,7 @@ function CustomerInfo(props) {
     console.log(props.customer);
     const fetchData = async () => {
       let response = await axios.get(
-        `http://localhost:3001/customer/${props.customer}`
+        `https://erp-system-2022.herokuapp.com/customer/${props.customer}`
       );
 
       setCustomerData(response.data);

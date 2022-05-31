@@ -65,7 +65,10 @@ function AddCustomerForm(props) {
       email: emailRef.current.value,
       accountManager: "karamalqinneh@live.com", //get the useremail
     };
-    let request = await axios.post("http://localhost:3001/add-customer", body);
+    let request = await axios.post(
+      "https://erp-system-2022.herokuapp.com/add-customer",
+      body
+    );
     console.log(request);
     customerNameRef.current.value = "";
     classRef.current.value = "";

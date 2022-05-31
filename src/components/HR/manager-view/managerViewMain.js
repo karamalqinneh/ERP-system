@@ -48,10 +48,10 @@ function ManagerViewMain(props) {
     const fetchData = async () => {
       let managerId = 1;
       let vacationsResponse = await axios.get(
-        `http://localhost:3001/manager/${managerId}/vacation-requests`
+        `https://erp-system-2022.herokuapp.com/manager/${managerId}/vacation-requests`
       );
       let leavesResponse = await axios.get(
-        `http://localhost:3001/manager/${managerId}/leave-requests`
+        `https://erp-system-2022.herokuapp.com/manager/${managerId}/leave-requests`
       );
       setLeaveRequests(leavesResponse.data);
       setVacationRequets(vacationsResponse.data);

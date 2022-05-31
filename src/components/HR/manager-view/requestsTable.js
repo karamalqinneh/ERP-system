@@ -41,13 +41,13 @@ function RequestsTable(props) {
   const acceptHandler = async (req) => {
     if (req.type == "Vacation") {
       let request = await axios.put(
-        `http://localhost:3001/manager/${managerId}/update-vacations`,
+        `https://erp-system-2022.herokuapp.com/manager/${managerId}/update-vacations`,
         { action: "ACC", id: req.id }
       );
       console.log(request);
     } else {
       let request = await axios.put(
-        `http://localhost:3001/manager/${managerId}/update-leaves`,
+        `https://erp-system-2022.herokuapp.com/manager/${managerId}/update-leaves`,
         { action: "ACC", id: req.id }
       );
       console.log(request);
@@ -56,13 +56,13 @@ function RequestsTable(props) {
   const declineHandler = async (req) => {
     if (req.type == "Vacation") {
       let request = await axios.put(
-        `http://localhost:3001/manager/${managerId}/update-vacations`,
+        `https://erp-system-2022.herokuapp.com/manager/${managerId}/update-vacations`,
         { action: "DEC", id: req.id }
       );
       console.log(request);
     } else {
       let request = await axios.put(
-        `http://localhost:3001/manager/${managerId}/update-leaves`,
+        `https://erp-system-2022.herokuapp.com/manager/${managerId}/update-leaves`,
         { action: "DEC", id: req.id }
       );
       console.log(request);

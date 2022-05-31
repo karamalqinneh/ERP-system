@@ -88,7 +88,7 @@ function VacationRequestMain(props) {
       user: 1,
     };
     let request = await axios.post(
-      "http://localhost:3001/new-vacation-request",
+      "https://erp-system-2022.herokuapp.com/new-vacation-request",
       body
     );
     console.log(request);

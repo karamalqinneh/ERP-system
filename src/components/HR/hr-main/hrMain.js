@@ -48,10 +48,10 @@ function HRMain() {
   useEffect(() => {
     const fetchData = async () => {
       let response = await axios.get(
-        `http://localhost:3001/employee/${login.user.id}/requests`
+        `https://erp-system-2022.herokuapp.com/employee/${login.user.id}/requests`
       );
       let employeeInfoResponse = await axios.get(
-        `http://localhost:3001/employee/${login.user.id}/info`
+        `https://erp-system-2022.herokuapp.com/employee/${login.user.id}/info`
       );
       setEmployeeInfo(employeeInfoResponse.data);
       let pending = [];
@@ -78,9 +78,15 @@ function HRMain() {
         </PrimaryData>
         <SecondaryData>
           <Data>Basic Salary: {employeeInfo.basicSalary}</Data>
-          <Data>Tenure: {employeeInfo.tenure.toFixed(2)} Months</Data>
           <Data>
-            Vacation Balance: {employeeInfo.vacationBalance.toFixed(2)}
+            Tenure: {employeeInfo.tenure ? employeeInfo.tenure.toFixed(2) : ""}{" "}
+            Months
+          </Data>
+          <Data>
+            Vacation Balance:{" "}
+            {employeeInfo.vacationBalance
+              ? employeeInfo.vacationBalance.toFixed(2)
+              : ""}
           </Data>
         </SecondaryData>
         <HistoryTable requestsHistory={requestsHistory} />

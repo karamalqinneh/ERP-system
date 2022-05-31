@@ -60,7 +60,7 @@ function SalarySlipMain(props) {
     const month = e.target.value;
     const user = 1;
     let salaryRequest = await axios.get(
-      `http://localhost:3001/employee/${user}/salary-slip/${month}`
+      `https://erp-system-2022.herokuapp.com/employee/${user}/salary-slip/${month}`
     );
     if (new Date() > new Date("2022", month, "01")) {
       setSalaryData({ ...salaryRequest.data, month: months[month - 1].name });
