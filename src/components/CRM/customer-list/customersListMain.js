@@ -42,7 +42,7 @@ const Td = styled.td`
 const Table = styled.table`
   border-collapse: collapse;
   background-color: #fefefa;
-  width: 80%;
+  width: 90%;
   border-radius: 10px;
   margin-top: 1rem;
 `;
@@ -54,17 +54,50 @@ const StyledButton = styled(Button)`
   margin-top: 0rem;
 `;
 
+const IndexList = styled.div`
+  height: 5vh;
+  width: 40vw;
+  display: flex;
+  justify-content: flex-start;
+  background-color: #fefefe;
+  margin-top: 2vh;
+`;
+
+const Index = styled.div`
+  height: 5vh;
+  width: 3vw;
+  margin-right: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.2rem;
+  font-size: 1.2rem;
+  color: rgba(9, 200, 195, 1);
+  background-color: #fefefe;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+  background: #fdfdfd;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  &.active {
+    background: #e9e9e9;
+  }
+`;
+
 function CustomersList(props) {
+  const indexRef = useRef();
   let classFilter = useRef();
   let managerFilter = useRef();
   const [modalShow, setModalShow] = useState(false);
   const [customersList, setCustomersList] = useState([]);
   let [filteredCustomers, setFilteredCustomers] = useState([]);
+  let [dataLength, setDataLength] = useState(0);
+  let [data, setData] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
       let response = await axios.get("http://localhost:3001/get-customers");
       setFilteredCustomers(response.data);
       setCustomersList(response.data);
+      setDataLength(response.data.length);
     };
     fetchData();
   }, []);
@@ -72,14 +105,15 @@ function CustomersList(props) {
   const classChangeHandler = (e) => {
     setFilteredCustomers(
       customersList.filter((ele) => {
-        if (classFilter.current.value == "Filter By Classes") {
+        if (classFilter.current.value === "Filter By Classes") {
           return true;
         } else {
-          return ele.customerClass == classFilter.current.value;
+          return ele.customerClass === classFilter.current.value;
         }
       })
     );
   };
+
   const managerChangeHandler = (e) => {
     setFilteredCustomers(
       customersList.filter((ele) => {
@@ -96,7 +130,51 @@ function CustomersList(props) {
     ...new Set(customersList.map((ele) => ele.accountManager)),
   ].map((ele, index) => <option key={index} value={ele}>{`${ele}`}</option>);
 
-  let rows = filteredCustomers.map((ele) => {
+  useEffect(() => {
+    if (filteredCustomers.length <= 5) {
+      setData([...filteredCustomers]);
+    } else {
+      let raw = ["", ...filteredCustomers];
+      let renderedData = [];
+      for (let i = 1; i <= 5; i++) {
+        renderedData.push(raw[i]);
+      }
+      setData([...renderedData]);
+    }
+  }, [filteredCustomers]);
+
+  const classesHandler = (e) => {
+    const children = [].slice.call(indexRef.current.children);
+    children.forEach((ele) => ele.classList.remove("active"));
+    e.target.classList.add("active");
+  };
+
+  const handlePagination = (e) => {
+    let raw = ["", ...filteredCustomers];
+    let page = parseInt(e.target.innerHTML);
+    let renderedData = [];
+    for (let i = 1; i <= 5 * page; i++) {
+      if (i >= 5 * page - 5 + 1 && i <= 5 * page) {
+        renderedData.push(raw[i]);
+      }
+    }
+    setData(renderedData);
+  };
+  let paginationIndex = Math.floor(dataLength / 5);
+
+  let indices = Array.from({ length: paginationIndex }, (_, i) => i + 1).map(
+    (ele, idx) => {
+      if (idx === 0) {
+        return (
+          <Index className={"active"} onClick={handlePagination}>
+            {ele}
+          </Index>
+        );
+      }
+      return <Index onClick={handlePagination}>{ele}</Index>;
+    }
+  );
+  let rows = data.map((ele) => {
     return (
       <>
         <tr key={ele.id}>
@@ -151,6 +229,9 @@ function CustomersList(props) {
           {rows}
         </tbody>
       </Table>
+      <IndexList ref={indexRef} onClick={classesHandler}>
+        {indices}
+      </IndexList>
     </Section>
   );
 }
