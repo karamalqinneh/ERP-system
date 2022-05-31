@@ -6,6 +6,7 @@ import data from "../../data";
 import MainWarehouse from "./warehouse-managment/warehouseMain";
 import SuppliersMain from "./suppliers/suppliersMain";
 import LoggedinHeader from "../../UI/headers/loggedinHeader";
+import Auth from "../context/auth/auth";
 
 const Section = styled.section`
   display: grid;
@@ -13,7 +14,7 @@ const Section = styled.section`
   grid-template-columns: 1fr 2vw;
   width: 80vw;
   height: 100vh;
-  position: fixed;
+  position: relative;
   left: 20vw;
   overflow-y: auto;
 `;
@@ -64,7 +65,7 @@ function SCM() {
         <SideBar tabsData={dataArray} tabName="SCM"></SideBar>
         <Section>
           <StyledInnerHeader></StyledInnerHeader>
-          {state}
+          <Auth> {state}</Auth>
         </Section>
       </div>
     </>

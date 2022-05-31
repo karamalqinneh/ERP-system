@@ -19,8 +19,6 @@ const Navbar = styled.nav`
   }
 `;
 
-// const Container = styled.div``;
-
 const Nav = styled.div`
   justify-content: flex-start;
   text-decoration: none;

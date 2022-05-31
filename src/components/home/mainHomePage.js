@@ -1,73 +1,77 @@
 import styled from "styled-components";
 import SideBar from "../../UI/side-bar/sideBar";
 import InnerHeader from "../../UI/headers/inner-headers";
+import LoggedinHeader from "../../UI/headers/loggedinHeader";
 import { useReducer } from "react";
 import data from "../../data";
-import SalesMain from "./sales/salesMain";
-import PurchasesMain from "./purchases/purchasesMain";
-import { Card } from "react-bootstrap";
-import LoggedinHeader from "../../UI/headers/loggedinHeader";
-import Auth from "../context/auth/auth";
+import Login from "./login";
+import Settings from "./settings/settings";
 
 const Section = styled.section`
   display: grid;
-  grid-template-rows: auto 5vh 1fr 10vh;
+  grid-template-rows: auto 5vw 1fr 10vh;
   grid-template-columns: 1fr 2vw;
   width: 80vw;
-  height: 100vh;
   position: relative;
   left: 20vw;
-  overflow-y: auto;
+  overflow-y: scroll;
 `;
 
 const StyledInnerHeader = styled(InnerHeader)`
   grid-area: 1 / 1 / 2 / 3;
 `;
-const Div = styled(Card)`
+const Div = styled.div`
   grid-area: 3 / 1 / 4 / 2;
   margin-left: 4rem;
-  background-color: #fefefe;
-  border-radius: 3px;
 `;
 
 const initialState = (
   <Div>
-    <SalesMain />
+    <Login />
   </Div>
 );
 
-function Sales() {
+function Home() {
   const reducer = (state, action) => {
     switch (action.type) {
-      case "SALES":
-        return initialState;
-      case "PURCHASES":
+      case "HOME":
         return (
           <Div>
-            <PurchasesMain />
+            <div>Home</div>
           </Div>
         );
-      case "REPORTS":
-        return <Div>Analytics and Reports</Div>;
+      case "LOGIN":
+        return (
+          <Div>
+            <Login />
+          </Div>
+        );
+      case "SETTINGS":
+        return (
+          <Div>
+            <Settings />
+          </Div>
+        );
       default:
         return initialState;
     }
   };
 
   const [state, dispatch] = useReducer(reducer, initialState);
-  const dataArray = data(dispatch).sales;
+  const dataArray = data(dispatch).Home;
+
   return (
     <>
       <LoggedinHeader />
       <div style={{ display: "flex" }}>
-        <SideBar tabsData={dataArray} tabName="Sales"></SideBar>
+        <SideBar tabsData={dataArray} tabName="Home"></SideBar>
         <Section>
           <StyledInnerHeader></StyledInnerHeader>
-          <Auth>{state}</Auth>
+          {state}
         </Section>
       </div>
     </>
   );
 }
 
-export default Sales;
+export default Home;
